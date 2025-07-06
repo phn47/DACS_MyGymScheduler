@@ -1,0 +1,213 @@
+﻿@model toanggg.Data.MembershipType
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutDashBoard";
+}
+@* <style>
+    .form-group {
+        border: 1px solid #c4c4c4; /* Màu và kích thước đường viền */
+        padding: 15px; /* Khoảng cách giữa đường viền và nội dung bên trong */
+        margin-bottom: 20px; /* Khoảng cách giữa các nhóm */
+        border-radius: 5px; /* Bo tròn các góc */
+    }
+
+    .color-text {
+        color: #c4c4c4;
+    }
+
+    .submit {
+        width: 100%;
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+        .submit button[type="submit"] {
+            font-size: 14px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: none;
+            padding: 14px 0 12px;
+            background: #f36100;
+            width: 100%;
+            border-radius: 5px; /* Bo tròn các góc */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Hiệu ứng màu nền */
+        }
+
+            .submit button[type="submit"]:hover {
+                background: #d35400; /* Màu nền khi di chuột vào */
+            }
+
+</style>
+<div class="services-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Đăng ký loại thành viên</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-5 container">
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label color-text">Tên loại</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label color-text">Mô tả</label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="AccessHours" class="control-label color-text"></label>
+                        <select id="AccessHours" class="form-control" asp-for="AccessHours" onchange="toggleTimeInput()">
+                            <option value="Month">Tháng</option>
+                            <option value="Year">Năm</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="MonthInput" style="display: none;">
+                        <label for="Month" class="control-label color-text">Chọn tháng</label>
+                        <select id="Month" name="Month" class="form-control">
+                            <option value="1">Tháng 1</option>
+                            <option value="2">Tháng 2</option>
+                            <option value="3">Tháng 3</option>
+                            <option value="4">Tháng 4</option>
+                            <option value="5">Tháng 5</option>
+                            <option value="6">Tháng 6</option>
+                            <option value="7">Tháng 7</option>
+                            <option value="8">Tháng 8</option>
+                            <option value="9">Tháng 9</option>
+                            <option value="10">Tháng 10</option>
+                            <option value="11">Tháng 11</option>
+                            <option value="12">Tháng 12</option>
+                            <!-- Thêm các tùy chọn tháng khác nếu cần -->
+                        </select>
+                    </div>
+                    <div class="form-group" id="YearInput" style="display: none;">
+                        <label for="Year" class="control-label color-text">Nhập năm</label>
+                        <input type="number" id="Year" name="Year" class="form-control" />
+                    </div>
+                    <!-- Trường ẩn để lưu giá trị của AccessHours -->
+                    <input type="hidden" id="HiddenAccessHours" name="AccessHours" />
+
+
+
+                    <div class="submit">
+                        <button type="submit">Đăng ký</button>
+                    </div>
+                </form>
+                <div class="submit mt-2">
+                    <a class="text-rbg" asp-action="Index">Trở về danh sách</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Đăng ký gói thẻ</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label">Tên loại</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Nhập tên loại" data-errors="Vui lòng nhập tên loại." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Mô tả</label>
+                                    <input asp-for="Description" class="form-control" placeholder="Nhập mô tả" data-errors="Vui lòng nhập mô tả huấn luyện viên." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="AccessHours" class="control-label color-text">Chọn ngày\năm</label>
+                                    <select id="AccessHours" class="form-control" asp-for="AccessHours" onchange="toggleTimeInput()">
+                                        <option value="Month">Tháng</option>
+                                        <option value="Year">Năm</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="MonthInput" style="display: none;">
+                                    <label for="Month" class="control-label color-text">Chọn tháng</label>
+                                    <select id="Month" name="Month" class="form-control">
+                                        <option value="1">Tháng 1</option>
+                                        <option value="2">Tháng 2</option>
+                                        <option value="3">Tháng 3</option>
+                                        <option value="4">Tháng 4</option>
+                                        <option value="5">Tháng 5</option>
+                                        <option value="6">Tháng 6</option>
+                                        <option value="7">Tháng 7</option>
+                                        <option value="8">Tháng 8</option>
+                                        <option value="9">Tháng 9</option>
+                                        <option value="10">Tháng 10</option>
+                                        <option value="11">Tháng 11</option>
+                                        <option value="12">Tháng 12</option>
+                                        <!-- Thêm các tùy chọn tháng khác nếu cần -->
+                                    </select>
+                                </div>
+                                <div class="form-group" id="YearInput" style="display: none;">
+                                    <label for="Year" class="control-label color-text">Nhập năm</label>
+                                    <input type="number" id="Year" name="Year" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <!-- Trường ẩn để lưu giá trị của AccessHours -->
+                                    <input type="hidden" id="HiddenAccessHours" name="AccessHours" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Đăng ký</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleTimeInput() {
+        var accessHours = document.getElementById("AccessHours").value;
+        var monthInput = document.getElementById("MonthInput");
+        var yearInput = document.getElementById("YearInput");
+
+        if (accessHours === "Year") {
+            yearInput.style.display = "block";
+            monthInput.style.display = "none";
+            hiddenAccessHours.value = "Year"; // Lưu giá trị "Year" vào trường ẩn
+        } else if (accessHours === "Month") {
+            yearInput.style.display = "none";
+            monthInput.style.display = "block";
+            hiddenAccessHours.value = "Month"; // Lưu giá trị "Month" vào trường ẩn
+        }
+    }
+</script>

@@ -1,0 +1,171 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TRAINER| Quản lý gym </title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/img/logo.png" />
+    <link rel="stylesheet" href="~/Admin/assets/css/backend-plugin.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/css/backend.css?v=1.0.0">
+    <link rel="stylesheet" href="~/Admin/assets/vendor/fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendor/remixicon/fonts/remixicon.css">
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <link href="~/ckeditor/contents.css">
+    @RenderSection("Styles", required: false)
+</head>
+<body class="  ">
+    <!-- loader Start -->
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+        <div class="iq-sidebar  sidebar-default ">
+            <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+                <a asp-area="Trainers" asp-controller="Home" asp-action="Index" class="header-logo">
+                    <img src="~/img/logo.png" class="img-fluid rounded-normal light-logo" alt="logo">
+                </a>
+                <div class="iq-menu-bt-sidebar ml-0">
+                    <i class="las la-bars wrapper-menu"></i>
+                </div>
+            </div>
+            <div class="data-scrollbar" data-scroll="1">
+                <nav class="iq-sidebar-menu">
+                    <ul id="iq-sidebar-toggle" class="iq-menu">
+                        <li class="active">
+                            <a href="/" class="svg-icon">
+                                <svg class="svg-icon" id="p-dash1" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                                <span class="ml-4">Dashboards</span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="#product" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                <svg class="svg-icon" id="p-dash2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H18C18 18.6863 15.3137 16 12 16C8.68629 16 6 18.6863 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z"></path>
+                                </svg>
+                                <span class="ml-4">Huấn luyện viên</span>
+                                <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="10 15 15 20 20 15"></polyline>
+                                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                                </svg>
+                            </a>
+                            <ul id="product" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                    <a asp-area="Trainers" asp-controller="Classes" asp-action="HuanLuyenRieng">
+                                        <i class="las la-minus"> </i><span>Đăng ký lớp học</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a asp-area="Trainers" asp-controller="Classes" asp-action="Create">
+                                        <i class="las la-minus"></i><span>Thêm lớp</span>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+                        <li class=" ">
+                            <a href="#accout" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 4.99509C3 3.89323 3.89262 3 4.99509 3H19.0049C20.1068 3 21 3.89262 21 4.99509V19.0049C21 20.1068 20.1074 21 19.0049 21H4.99509C3.89323 21 3 20.1074 3 19.0049V4.99509ZM5 5V19H19V5H5ZM7.97216 18.1808C7.35347 17.9129 6.76719 17.5843 6.22083 17.2024C7.46773 15.2753 9.63602 14 12.1022 14C14.5015 14 16.6189 15.2071 17.8801 17.0472C17.3438 17.4436 16.7664 17.7877 16.1555 18.0718C15.2472 16.8166 13.77 16 12.1022 16C10.3865 16 8.87271 16.8641 7.97216 18.1808ZM12 13C10.067 13 8.5 11.433 8.5 9.5C8.5 7.567 10.067 6 12 6C13.933 6 15.5 7.567 15.5 9.5C15.5 11.433 13.933 13 12 13ZM12 11C12.8284 11 13.5 10.3284 13.5 9.5C13.5 8.67157 12.8284 8 12 8C11.1716 8 10.5 8.67157 10.5 9.5C10.5 10.3284 11.1716 11 12 11Z"></path></svg>
+                                <span class="ml-4">Tài khoản</span>
+                                <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="10 15 15 20 20 15"></polyline>
+                                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                                </svg>
+                            </a>
+                            <ul id="accout" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                    <a asp-area="" asp-controller="Users" asp-action="linh2k3">
+                                        <i class="las la-minus"></i><span>Thông tin tài khoản</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+
+
+                    </ul>
+                </nav>
+                <div class="p-3"></div>
+            </div>
+        </div>      <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                    <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                        <i class="ri-menu-line wrapper-menu"></i>
+                        <a href="../backend/index.html" class="header-logo">
+                            <img src="~/img/logo.png" class="img-fluid rounded-normal" alt="logo">
+
+                        </a>
+                    </div>
+                    <div class="iq-search-bar device-search">
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-label="Toggle navigation">
+                            <i class="ri-menu-3-line"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                                <li class="nav-item nav-icon dropdown caption-content">
+                                    <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton4"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="~/Admin/assets/images/user/1.png" class="img-fluid rounded" alt="user">
+                                    </a>
+                                    <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <div class="card shadow-none m-0">
+                                            <div class="card-body p-0 text-center">
+                                                <div class="media-body profile-detail text-center">
+                                                    <img src="~/Admin/assets/images/page-img/profile-bg.jpg" alt="profile-bg"
+                                                         class="rounded-top img-fluid mb-4">
+                                                    <img src="~/Admin/assets/images/user/1.png" alt="profile-img"
+                                                         class="rounded profile-img img-fluid avatar-70">
+                                                </div>
+                                                <div class="p-3">
+
+                                                    <div class="d-flex align-items-center justify-content-center mt-3">
+                                                        <a asp-area="" asp-controller="Users" asp-action="DangXuat" class="btn border">
+                                                            Đăng xuất
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="content-page">
+            @RenderBody()
+        </div>
+        <footer class="iq-footer">
+        </footer>
+        <!-- Backend Bundle JavaScript -->
+        <script src="~/Admin/assets/js/backend-bundle.min.js"></script>
+
+        <!-- Table Treeview JavaScript -->
+        <script src="~/Admin/assets/js/table-treeview.js"></script>
+
+        <!-- Chart Custom JavaScript -->
+        <script src="~/Admin/assets/js/customizer.js"></script>
+
+        <!-- Chart Custom JavaScript -->
+        <script async src="~/Admin/assets/js/chart-custom.js"></script>
+
+        <!-- app JavaScript -->
+        <script src="~/Admin/assets/js/app.js"></script>
+        @RenderSection("Scripts", required: false)
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿@model toanggg.Data.ClassSchedule
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class="container-fluid Delete-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thông tin lịch tập</h4>
+                        <p class="mb-0">
+                            Bạn có chắc chắn muốn xóa thông tin lịp tập này không?
+                        </p>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Delete" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="hidden" asp-for="ScheduleId" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="StartDate" class="control-label">Ngày bắt đầu</label>
+                                    <input asp-for="StartDate" readonly class="form-control" placeholder="Nhập ngày bắt đầu" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="EndDate" class="control-label">Ngày kết thúc</label>
+                                    <input asp-for="EndDate" readonly class="form-control" placeholder="Nhập ngày kết thúc" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Weekday" class="control-label">Thứ trong tuần</label>
+                                    <input asp-for="Weekday" readonly class="form-control" placeholder="Nhập thứ" />
+                                    @*   <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="StartTime" class="control-label">Giờ bắt đầu</label>
+                                    <input asp-for="StartTime" readonly class="form-control" placeholder="Nhập giờ bắt đầu" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="EndTime" class="control-label">Giờ kết thúc</label>
+                                    <input asp-for="EndTime" readonly class="form-control" placeholder="Nhập giờ kết thúc" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Room" class="control-label">Phòng học</label>
+                                    <input asp-for="Room" readonly class="form-control" placeholder="Nhập phòng học" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Status" class="control-label">Trạng thái</label>
+                                    <input asp-for="Status" readonly class="form-control" placeholder="Nhập trạng thái" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClassId" class="control-label">Lớp học</label>
+                                    <input asp-for="ClassId" readonly class="form-control" asp-items="ViewBag.ClassId"></input>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Xóa thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

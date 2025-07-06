@@ -1,0 +1,72 @@
+﻿@model IEnumerable<toanggg.Data.Trainer>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                <div>
+                    <h4 class="mb-3">Danh sách huấn luyện viên</h4>
+                    <p class="mb-0">
+                        Cung cấp thông tin chi tiết về mỗi huấn luyện viên như tên, sdt, email, mô tả, v.v.. Giúp người dùng hiểu rõ về các huấn luyện viên.
+                    </p>
+                </div>
+                <a asp-area="" asp-controller="Trainers" asp-action="Create" class="btn btn-primary add-list">
+                    <i class="las la-plus mr-3"></i>Thêm huấn luyện viên
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="table-responsive rounded mb-3">
+                <table class=" table mb-0 tbl-server-info dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                    <thead class="bg-white text-uppercase">
+                        <tr class="ligth ligth-data" role="row">
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Họ tên: activate to sort column ascending" style="width: 11.8048%;">@Html.DisplayNameFor(model => model.FullName)</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="SDT: activate to sort column ascending">@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">@Html.DisplayNameFor(model => model.Email)</th>
+                            @*  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Mô tả: activate to sort column ascending" >@Html.DisplayNameFor(model => model.Description)</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Chuyên môn: activate to sort column ascending" >@Html.DisplayNameFor(model => model.Expertise)</th> *@
+                            @*   <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Trạng thái: activate to sort column ascending" >@Html.DisplayNameFor(model => model.Status)</th> *@
+                            @*        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Họ tên: activate to sort column ascending" >@Html.DisplayNameFor(model => model.Gym.GymId)</th> *@
+
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Hành động: activate to sort column ascending">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody class="ligth-body">
+                        @foreach (var item in Model)
+                        {
+                            <tr class="odd">
+                                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                @*  <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Expertise)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gym.Name)</td> *@
+
+                                <td>
+                                    <div class="d-flex align-items-center list-action">
+                                        <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="Edit"
+                                           asp-controller="Trainers" asp-action="Edit" asp-route-id="@item.TrainerId">
+                                            <i class="ri-pencil-line mr-0"></i>
+                                        </a>
+
+                                        <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="Delete"
+                                           asp-controller="Trainers" asp-action="Delete" asp-route-id="@item.TrainerId">
+                                            <i class="ri-delete-bin-line mr-0"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Page end  -->
+</div>

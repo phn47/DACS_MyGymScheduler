@@ -1,0 +1,205 @@
+﻿@model toanggg.Models.RegisterVM
+@{
+    ViewData["Title"] = "DangKyNhanVien";
+    Layout = "_LayoutDashBoard";
+}
+
+
+@* <div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thêm huấn luyện viên</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="FullName" class="control-label">Họ tên</label>
+                                    <input asp-for="FullName" class="form-control" placeholder="Nhập họ tên" data-errors="Vui lòng nhập đầy đủ họ tên." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại" data-errors="Vui lòng nhập số điện thoại." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" placeholder="Nhập địa chỉ email" data-errors="Vui lòng nhập địa chỉ email." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Mô tả</label>
+                                    <input asp-for="Description" class="form-control" placeholder="Nhập mô tả" data-errors="Vui lòng nhập mô tả huấn luyện viên." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Expertise" class="control-label">Chuyên môn</label>
+                                    <input asp-for="Expertise" class="form-control" placeholder="Nhập chuyên môn" data-errors="Vui lòng nhập chuyên môn của huấn luyện viên." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="GymId" class="control-label">GymId ?</label>
+                                    <select asp-for="GymId" class="form-control" asp-items="ViewBag.GymId"></select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Xác nhận thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ *@
+
+
+<!-- Flatpickr CSS -->
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- Flatpickr Vietnamese Language -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
+
+
+
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thêm huấn luyện viên</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Username" class="control-label">Tên đăng nhập</label>
+                                    <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" data-errors="Vui lòng nhập tên đăng nhập." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label">Mật khẩu</label>
+                                    <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu" data-errors="Vui lòng nhập mật khẩu." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" placeholder="Nhập địa chỉ email" data-errors="Vui lòng nhập địa chỉ email." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="FullName" class="control-label">Họ và tên</label>
+                                    <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên" data-errors="Vui lòng nhập đầy đủ họ và tên." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại" data-errors="Vui lòng nhập số điện thoại." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Giới tính:</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Male">
+                                        <label class="form-check-label" for="Nam">Nam</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Gender" id="female" value="Female">
+                                        <label class="form-check-label" for="Nữ">Nữ</label>
+                                    </div>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Dob" class="control-label">Ngày sinh</label>
+                                    <input asp-for="Dob" type="text" class="form-control" id="dobPicker" placeholder="Nhập ngày sinh" data-errors="Vui lòng nhập ngày sinh." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label">Địa chỉ</label>
+                                    <input asp-for="Address" class="form-control" placeholder="Nhập địa chỉ" data-errors="Vui lòng nhập địa chỉ." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Avatar" class="control-label">Hình ảnh</label>
+                                    <input asp-for="Avatar" type="file" class="form-control" placeholder="Tải hình lên" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Xác nhận thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("#dobPicker", {
+            dateFormat: "d/m/Y",
+            allowInput: true,
+            altInput: true,
+            altFormat: "d/m/Y",
+            defaultDate: new Date(),
+            locale: "vn" // Set the locale to Vietnamese
+        });
+    });
+</script>
+

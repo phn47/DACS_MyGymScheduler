@@ -1,0 +1,109 @@
+﻿@model toanggg.Data.ClassSchedule
+
+@{
+    ViewData["Title"] = "DangKyLopPT";
+    Layout = "_LayoutDashBoard";
+}
+
+<style>
+    .form-group {
+        border: 1px solid #c4c4c4; /* Màu và kích thước đường viền */
+        padding: 15px; /* Khoảng cách giữa đường viền và nội dung bên trong */
+        margin-bottom: 20px; /* Khoảng cách giữa các nhóm */
+        border-radius: 5px; /* Bo tròn các góc */
+    }
+
+    .color-text {
+        color: #111111;
+    }
+
+    .submit {
+        width: 100%;
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+        .submit button[type="submit"] {
+            font-size: 14px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: none;
+            padding: 14px 0 12px;
+            background: #f36100;
+            width: 100%;
+            border-radius: 5px; /* Bo tròn các góc */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Hiệu ứng màu nền */
+        }
+
+            .submit button[type="submit"]:hover {
+                background: #d35400; /* Màu nền khi di chuột vào */
+            }
+
+</style>
+
+<div class=" spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2 class="text-dark text-center">Xác nhận</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-5 container">
+                <form asp-action="DangKyLopPT">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ClassId" class="control-label color-text">PT</label>
+                        <select asp-for="ClassId" class="form-control" asp-items="ViewBag.ClassId"></select>
+                    </div>
+
+
+
+
+                    <div class="submit">
+                        <button type="submit">Đăng ký</button>
+                    </div>
+                </form>
+                <div class="submit mt-2">
+                    @* <a class="text-rbg" asp-action="Index">Trở về danh sách</a> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Bắt sự kiện khi người dùng chọn một ca làm việc
+    document.getElementById('shiftSelect').addEventListener('change', function () {
+        var selectedShift = this.value; // Lấy giá trị của ca làm việc được chọn
+
+        // Gán giá trị thích hợp cho StartTime và EndTime dựa trên ca làm việc được chọn
+        switch (selectedShift) {
+            case 'Ca1':
+                document.getElementById('startTimeInput').value = '06:00:00.0000000';
+                document.getElementById('endTimeInput').value = '08:00:00.0000000';
+                break;
+            case 'Ca2':
+                document.getElementById('startTimeInput').value = '10:00:00.0000000';
+                document.getElementById('endTimeInput').value = '12:00:00.0000000';
+                break;
+            case 'Ca3':
+                document.getElementById('startTimeInput').value = '17:00:00.0000000';
+                document.getElementById('endTimeInput').value = '19:00:00.0000000';
+                break;
+            case 'Ca4':
+                document.getElementById('startTimeInput').value = '19:00:00.0000000';
+                document.getElementById('endTimeInput').value = '21:00:00.0000000';
+                break;
+            default:
+                // Xử lý khi không có ca làm việc nào được chọn
+                document.getElementById('startTimeInput').value = '';
+                document.getElementById('endTimeInput').value = '';
+                break;
+        }
+    });
+</script>
+
+

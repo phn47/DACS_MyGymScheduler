@@ -1,0 +1,296 @@
+﻿@model toanggg.Data.Gym
+
+@{
+    ViewData["Title"] = "Chi Tiết Phòng Gym";
+    Layout = "_LayoutCustomer";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <meta http-equiv="content-language" content="en">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/vendor/core/plugins/language/css/language-public.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/plugins/slick-carousel/slick/slick-theme.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/plugins/slick-carousel/slick/slick.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/plugins/zurb-twentytwenty/css/twentytwenty.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/plugins/metismenu/dist/metisMenu.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/plugins/photoswipe/dist/photoswipe.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/plugins/photoswipe/dist/default-skin/default-skin.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/css/style.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="~/Gym/themes/citigym/css/custom.css">
+
+
+    <script src="~/Gym/themes/citigym/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/jquery.serializejson.min.js"></script>
+
+</head>
+<body>
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+
+                        <div class="bt-option">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <div class="main-wrapper" style="padding-top: 72.8px;">
+        <nav class="breadcrumb-text wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">
+            <div class="container">
+                <div class="breadcrumb-title">@Model.Name</div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="" asp-controller="Gyms" asp-action="HeThongGym">Câu lạc bộ</a></li>
+                    <li class="breadcrumb-item active">@Model.Name</li>
+                </ol>
+            </div>
+        </nav>
+        <a href="">
+            <div class="main-breadcrumb" style="opacity: 1;">
+                <img src="~/Hinh/HinhGym/@Model.Images" alt="@Model.Name" style="width: 100%; height: auto; border-radius: 5px; margin-bottom: 10px;" />
+            </div>
+    </div>
+    </a>
+    <section class="section section-club-detail-info">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 content-text pr-lg-5 m-b-md-5 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+                    <div class="feature-title" style="background-image: url(/Hinh/HinhGym/sosanhgoi.jpg);">@Model.Name</div>
+                    <div class="sidebar-body">
+                        <div class="item-border">
+                            <div class="m-b-24px">
+                                <div class="m-b-24px">
+                                    <h1 class="h6 title-s1">CLB @Model.Name - Khu vườn fitness trong thành phố</h1>
+                                </div>
+                                <div class="h6 title-s1">Địa điểm</div>
+                                <div class="icon-list">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                        <path d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z">
+                                        </path>
+                                    </svg>
+                                    @Model.Address
+                                </div>
+                            </div>
+
+                            <div class="m-b-24px">
+                                <div class="h6 title-s1">Giờ Hoạt Động</div>
+                                <p class="text-dark">
+                                    Thứ 2 đến thứ 6: 6:00 - 23:00
+                                    <br>
+                                    Thứ 7, CN: 6:00 - 22:00
+                                </p>
+                            </div>
+
+                            <div class="m-b-24px">
+                                <div class="h6 title-s1">Tầm giá</div>
+                                <div class="icon-list">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                        <path d="M12.0049 22.0027C6.48204 22.0027 2.00488 17.5256 2.00488 12.0027C2.00488 6.4799 6.48204 2.00275 12.0049 2.00275C17.5277 2.00275 22.0049 6.4799 22.0049 12.0027C22.0049 17.5256 17.5277 22.0027 12.0049 22.0027ZM12.0049 20.0027C16.4232 20.0027 20.0049 16.421 20.0049 12.0027C20.0049 7.58447 16.4232 4.00275 12.0049 4.00275C7.5866 4.00275 4.00488 7.58447 4.00488 12.0027C4.00488 16.421 7.5866 20.0027 12.0049 20.0027ZM8.50488 14.0027H14.0049C14.281 14.0027 14.5049 13.7789 14.5049 13.5027C14.5049 13.2266 14.281 13.0027 14.0049 13.0027H10.0049C8.62417 13.0027 7.50488 11.8835 7.50488 10.5027C7.50488 9.12203 8.62417 8.00275 10.0049 8.00275H11.0049V6.00275H13.0049V8.00275H15.5049V10.0027H10.0049C9.72874 10.0027 9.50488 10.2266 9.50488 10.5027C9.50488 10.7789 9.72874 11.0027 10.0049 11.0027H14.0049C15.3856 11.0027 16.5049 12.122 16.5049 13.5027C16.5049 14.8835 15.3856 16.0027 14.0049 16.0027H13.0049V18.0027H11.0049V16.0027H8.50488V14.0027Z">
+                                        </path>
+                                    </svg>
+                                    @Model.PriceRange
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <a asp-area="" asp-controller="ClassSchedules" asp-action="LichTrinh" class="btn btn-brand btn-block">Xem Lịch học</a>
+                                <a asp-area="" asp-controller="Users" asp-action="Member" class="btn btn-dark btn-block">Xem chính sách giá</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p>CLB @Model.Name là phòng tập đẳng cấp được khai trương đầu tiên của hệ thống phòng gym tọa lạc tại trung tâm @Model.Address. Nơi đây có không gian luyện tập mang hơi thở thiên nhiên năng động, thoải mái, đem đến cho bạn cảm giác thật hào hứng, sảng khoái khi tập luyện. Phòng tập của Citigym Thành Thái được trang bị đầy đủ các thiết bị hiện đại, cao cấp từ những thương hiệu hàng đầu thế giới như Technogym, LifeFitness, Escape, Reebok, Octane, Les Mills. Đây cũng là hệ thống phòng tập đầu tiên tại @Model.Address sử dụng dụng cụ tạ đòn, bục nhảy SmartBar, SmartStep của LesMills.</p>
+                </div>
+                <div class="col-lg-6 content-bg stripe-section wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="stripe-vector-1"><img src="~/Gym/themes/citigym/images/svg/stripe-section-left-grey.svg"></div>
+                    <div class="stripe-vector-2"><img src="~/Gym/themes/citigym/images/svg/stripe-section-right-grey.svg"></div>
+                    <div class="content-img">
+                        <img alt="" src="~/Hinh/HinhGym/breadcum1.png" class="content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-club-detail-slider wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+        <div class="slider-wrapper slider-gallery slick-initialized slick-slider slick-dotted">
+            <div class="prev-chervon slick-arrow" style=""><img src="~/Gym/themes/citigym//images/icons/chevron-l.svg"></div>
+            <div class="slick-list draggable">
+                <div class="slick-track" style="opacity: 1; width: 9720px; transform: translate3d(-648px, 0px, 0px);">
+                    <div class="item slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/sosanhgoi.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/3-scaled.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide" data-slick-index="1" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/2-scaled.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide" data-slick-index="2" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym1.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide" data-slick-index="3" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym2.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide" data-slick-index="4" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym3.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide" data-slick-index="5" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym4.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide" data-slick-index="6" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym5.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/3-scaled.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/2-scaled.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym1.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym2.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym3.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-cloned" data-slick-index="12" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym4.jpg" class="content">
+                        </div>
+                    </div><div class="item slick-slide slick-cloned" data-slick-index="13" id="" aria-hidden="true" style="width: 648px;">
+                        <div class="item-img">
+                            <img alt="" src="~/Hinh/HinhGym/gym5.jpg" class="content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-chervon slick-arrow" style=""><img src="~/Gym/themes/citigym//images/icons/chevron-r.svg"></div><ul class="slick-dots" style=""><li class="slick-active"><button type="button">1</button></li><li><button type="button">2</button></li><li><button type="button">3</button></li><li><button type="button">4</button></li><li><button type="button">5</button></li><li><button type="button">6</button></li><li><button type="button">7</button></li></ul>
+        </div>
+        <div class="content-overlay container">
+            <div class="content">
+                <div class="small-gallery">
+
+                    <a href="~/Hinh/HinhGym/3-scaled.jpg" class="item" data-size="1905x970">
+                        <img alt="" src="~/Hinh/HinhGym/3-scaled.jpg">
+                    </a>
+                    <a href="~/Hinh/HinhGym/2-scaled.jpg" class="item" data-size="1905x970">
+                        <img alt="" src="~/Hinh/HinhGym/2-scaled.jpg">
+                    </a>
+                    <a href="~/Hinh/HinhGym/gym1.jpg" class="item" data-size="1905x970">
+                        <img alt="" src="~/Hinh/HinhGym/gym1.jpg">
+                    </a>
+                    <a href="~/Hinh/HinhGym/gym2.jpg" class="item" data-size="1905x970" data-count="7">
+                        <img alt="" src="~/Hinh/HinhGym/gym2.jpg">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section section-club-map mb-0">
+        <div class="container-fluid px-0">
+            <div class="row mx-0 align-items-center">
+                <div class="col-lg-3 px-0 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+                    <div class="sidebar-wrapper">
+                        <div class="sidebar-top style-brand">@Model.Name<h3 class="sub-description mx-auto h6 title-s1">Địa điểm phòng gym @Model.Name</h3><div class="stripe-vector"><img alt="Tập luyện tại hệ thống" src="~/Hinh/HinhGym/stripe-1-grey.svg"></div></div>
+                        <div class="sidebar-body">
+                            <div class="item-border">
+                                <div class="m-b-24px">
+                                    <div class="h6 title-s1">Địa điểm</div>
+                                    <div class="icon-list">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                            <path d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z">
+                                            </path>
+                                        </svg>
+                                        @Model.Address
+                                    </div>
+                                </div>
+
+                                <div class="m-b-24px">
+                                    <div class="h6 title-s1">Giờ Hoạt Động</div>
+                                    <p class="text-dark">
+                                        Thứ 2 đến thứ 6: 6:00 - 23:00
+                                        <br>
+                                        Thứ 7, CN: 6:00 - 22:00
+                                    </p>
+                                </div>
+
+                                <div class="m-b-24px">
+                                    <div class="h6 title-s1">Tầm giá</div>
+                                    <div class="icon-list">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                            <path d="M12.0049 22.0027C6.48204 22.0027 2.00488 17.5256 2.00488 12.0027C2.00488 6.4799 6.48204 2.00275 12.0049 2.00275C17.5277 2.00275 22.0049 6.4799 22.0049 12.0027C22.0049 17.5256 17.5277 22.0027 12.0049 22.0027ZM12.0049 20.0027C16.4232 20.0027 20.0049 16.421 20.0049 12.0027C20.0049 7.58447 16.4232 4.00275 12.0049 4.00275C7.5866 4.00275 4.00488 7.58447 4.00488 12.0027C4.00488 16.421 7.5866 20.0027 12.0049 20.0027ZM8.50488 14.0027H14.0049C14.281 14.0027 14.5049 13.7789 14.5049 13.5027C14.5049 13.2266 14.281 13.0027 14.0049 13.0027H10.0049C8.62417 13.0027 7.50488 11.8835 7.50488 10.5027C7.50488 9.12203 8.62417 8.00275 10.0049 8.00275H11.0049V6.00275H13.0049V8.00275H15.5049V10.0027H10.0049C9.72874 10.0027 9.50488 10.2266 9.50488 10.5027C9.50488 10.7789 9.72874 11.0027 10.0049 11.0027H14.0049C15.3856 11.0027 16.5049 12.122 16.5049 13.5027C16.5049 14.8835 15.3856 16.0027 14.0049 16.0027H13.0049V18.0027H11.0049V16.0027H8.50488V14.0027Z">
+                                            </path>
+                                        </svg>
+                                        @Model.PriceRange
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <a asp-area="" asp-controller="ClassSchedules" asp-action="LichTrinh" class="btn btn-brand btn-block">Xem Lịch học</a>
+                                    <a asp-area="" asp-controller="Users" asp-action="Member" class="btn btn-dark btn-block">Xem chính sách giá</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 px-0 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+                    <div id="map-canvas" class="map-content" style="position: relative; overflow: hidden;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1164.9702733547142!2d106.76630818909439!3d10.851254907196733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1717523966081!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script src="~/Gym/vendor/core/plugins/language/js/language-public.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/slick-carousel/slick/slick.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/wowjs/dist/wow.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/metismenu/dist/metisMenu.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/zurb-twentytwenty/js/jquery.event.move.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/photoswipe/dist/photoswipe.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/zurb-twentytwenty/js/jquery.twentytwenty.js"></script>
+    <script src="~/Gym/themes/citigym/js/style.min.js"></script>
+    <script src="~/Gym/themes/citigym/plugins/photoswipe/dist/photoswipe-ui-default.min.js"></script>
+
+    <script src="~/Gym/themes/citigym/bundle/contact/assets/js/index.js"></script>
+
+
+</body>
+</html>

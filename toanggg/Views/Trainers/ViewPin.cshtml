@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "ViewPin";
+    Layout = "_LayoutDashBoard";
+}
+
+<style>
+    /* Định dạng container đăng nhập */
+    .login-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+        .login-container h2 {
+            text-align: center; /* Căn giữa tiêu đề */
+            color: #333; /* Màu chữ */
+            font-family: Arial, sans-serif;
+        }
+
+    /* Định dạng tiêu đề */
+    .login-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    /* Định dạng form */
+    .login-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+    .form-control {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 16px;
+    }
+
+    /* Định dạng nút và liên kết */
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .form-actions .btn {
+            flex: 1;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+    }
+
+    .forgot-password {
+        font-size: 14px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .signup-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .submit {
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+        .submit button[type="submit"] {
+            font-size: 16px;
+            color: #fff; /* Màu chữ */
+            text-transform: uppercase;
+            font-weight: 700;
+            border: none;
+            padding: 14px 20px;
+            background: #f36100; /* Màu nền */
+            width: 100%;
+            border-radius: 5px; /* Bo tròn các góc */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Hiệu ứng màu nền */
+        }
+
+            .submit button[type="submit"]:hover {
+                background: #d35400; /* Màu nền khi di chuột vào */
+            }
+</style>
+<div class="services-section spad">
+    <div class="login-container">
+        <h2 class="login-title">Nhập mã pin</h2>
+        <form class="login-form" asp-action="OnPost" method="post">
+            <div class="form-group">
+                <label for="pin">Mã pin</label>
+                <input type="password" class="form-control" id="pin" name="pin" required />
+            </div>
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-danger">@ViewBag.Message</div>
+            }
+            <div class="form-actions d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Xác nhận</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Thông Tin Cá Nhân";
+    Layout = "_LayoutCustomer";
+}
+<style>
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        font-family: "Roboto Condensed",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    }
+
+    .roboto {
+        font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    }
+</style>
+<section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <div class="bt-option">
+                        <a href="/">Trang Chủ</a>
+                        <span>Thông Tin Cá Nhân</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container-fluid detail-form-list spad">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thông Tin Cá Nhân</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/Hinh/HinhGym/@ViewBag.UserInfo.Avatar" class="img-fluid rounded-circle" alt="@ViewBag.UserInfo.FullName" />
+                        </div>
+                        <div class="col-md-8">
+                            <form asp-action="UpdateUserInfo" method="post" data-toggle="validator" enctype="multipart/form-data">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <h3>@ViewBag.UserInfo.FullName</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Email</label>
+                                            <input readonly class="form-control" required name="Email" value="@ViewBag.UserInfo.Email" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Số điện thoại</label>
+                                            <input class="form-control" required name="PhoneNumber" value="@ViewBag.UserInfo.PhoneNumber" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Giới tính</label>
+                                            <input readonly class="form-control" required name="Gender" value="@ViewBag.UserInfo.Gender" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label type="date" class="control-label">Ngày sinh</label>
+                                            <input readonly class="form-control" required name="Dob" value="@ViewBag.UserInfo.Dob" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Địa chỉ</label>
+                                            <input  class="form-control" required name="Address" value="@ViewBag.UserInfo.Address" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Loại gói</label>
+                                            <input readonly class="form-control" required name="MembershipType" value="@ViewBag.UserInfo.MembershipType" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Hạn gói</label>
+                                            <input readonly class="form-control" required value="@ViewBag.UserInfo.MembershipStarDate?.ToString("dd/MM/yyyy") đến @ViewBag.UserInfo.MembershipEndDate?.ToString("dd/MM/yyyy")" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <h4> Các Lớp Học Đã Đăng Ký</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Thời gian</th>
+                                    <th>Loại lớp học</th>
+                                    <th>Tên giảng viên</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var schedule in ViewBag.RegisteredSchedules)
+                                {
+                                    <tr>
+                                        <td>@schedule.Weekday @schedule.StartTime -> @schedule.EndTime</td>
+                                        <td>@schedule.ClassType</td>
+                                        <td>@schedule.TrainerFullName</td>
+                                        <td>
+                                            <form asp-action="HuyDangKy" method="post" onsubmit="return confirm('Bạn có chắc muốn hủy đăng ký lớp học này không?');">
+                                                <input type="hidden" name="scheduleId" value="@schedule.ScheduleId" />
+                                                <button type="submit" class="btn btn-danger">Hủy đăng ký</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

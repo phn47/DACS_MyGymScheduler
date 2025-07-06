@@ -1,0 +1,145 @@
+﻿@model toanggg.Data.ClassSchedule
+@{
+    ViewData["Title"] = "DangKyLop";
+    Layout = "_LayoutCustomer";
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <div class="bt-option">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-fluid add-form-list mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Lớp học đã đăng ký</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <table class=" table mb-0 tbl-server-info dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                            <thead class="bg-white text-uppercase">
+                                <tr class="ligth ligth-data" role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Họ tên: activate to sort column ascending">Thời gian</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="SDT: activate to sort column ascending">Loại lớp học</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Tên giảng viên</th>
+
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Hành động: activate to sort column ascending">Hành động</th>
+                                </tr>
+
+                            </thead>
+                            <tbody class="ligth-body">
+                                @foreach (var schedule in ViewBag.RegisteredSchedules)
+                                {
+                                    <tr>
+                                        <td>@schedule.Weekday @schedule.StartTime->@schedule.EndTime</td>
+                                        <td>@schedule.ClassType</td>
+                                        <td>@schedule.TrainerFullName</td>
+                                        <td>
+                                            <form asp-action="HuyDangKy" method="post">
+                                                <input type="hidden" name="scheduleId" value="@schedule.ScheduleId" />
+                                                <button type="submit" class="btn btn-danger">Hủy đăng ký</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid add-form-list spad">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Đăng Ký Lớp</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var cls in ViewBag.AllClasses)
+                        {
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <img src="~/Hinh/HinhGym/@cls.TrainerAvatar" class="card-img-top" alt="@cls.TrainerFullName" />
+                                    <div class="card-body">
+                                        <h5 class="card-title">@cls.ClassType</h5>
+                                        <p class="card-text">
+                                            <strong>Giảng viên:</strong> @cls.TrainerFullName<br />
+                                            <strong>Thời gian:</strong> @cls.Weekday @cls.StartTime -> @cls.EndTime
+                                        </p>
+                                        <form asp-action="DangKyLop" method="post">
+                                            <input type="hidden" name="ScheduleId" value="@cls.ScheduleId" />
+                                            <button type="submit" class="btn btn-primary">Đặt lớp</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#ScheduleId").change(function () {
+                var scheduleId = $(this).val();
+
+                // AJAX request để lấy thông tin lớp và giảng viên cho lịch đã chọn
+                $.ajax({
+                    url: "/Users/GetClassDetailsForSchedule",
+                    type: "GET",
+                    data: { scheduleId: scheduleId },
+                    success: function (data) {
+                        if (data) {
+                            // Cập nhật tên giảng viên
+                            $("#TrainerFullName").text(data.trainerFullName);
+                            // Cập nhật hình ảnh giảng viên
+                            var trainerImage = $("#TrainerImage");
+                            if (data.trainerImage) {
+                                trainerImage.attr("src", data.trainerImage);
+                                trainerImage.show();
+                            } else {
+                                trainerImage.hide();
+                            }
+                        } else {
+                            $("#TrainerFullName").text("N/A");
+                            $("#TrainerImage").hide();
+                        }
+                    },
+                    error: function () {
+                        console.log("Lỗi xảy ra khi lấy thông tin lớp học cho lịch học.");
+                    }
+                });
+            });
+
+            // Gọi sự kiện onchange lần đầu tiên để hiển thị thông tin lớp học mặc định
+            $("#ScheduleId").change();
+        });
+    </script>
+}

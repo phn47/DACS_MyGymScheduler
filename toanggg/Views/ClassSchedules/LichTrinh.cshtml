@@ -1,0 +1,372 @@
+﻿@model DateTime
+@using toanggg.Data;
+@using System.Data.SqlClient;
+@using Dapper;
+
+@{
+    ViewData["Title"] = "LichTrinh";
+    Layout = "_LayoutCustomer";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lịch học cho ngày @Model.ToShortDateString()</title>
+    <style>
+        .class-timetable table {
+            border: 1px solid #363636;
+            text-align: center;
+        }
+
+            .class-timetable table thead {
+                border-bottom: 1px solid #363636;
+            }
+
+                .class-timetable table thead tr th {
+                    font-size: 14px;
+                    color: #ffffff;
+                    background: #f36100;
+                    border-right: 1px solid #363636;
+                    padding: 15px 0;
+                    font-weight: 400;
+                }
+
+            .class-timetable table tbody tr td {
+                width: 146px;
+                padding: 35px 0;
+            }
+
+                .class-timetable table tbody tr td.class-time {
+                    font-size: 12px;
+                    color: #f36100;
+                    background: #EEEEEE;
+                    border: 1px solid #363636;
+                }
+
+                .class-timetable table tbody tr td.dark-bg {
+                    background: #EEEEEE;
+                }
+
+                .class-timetable table tbody tr td.hover-bg {
+                    -webkit-transition: all 0.3s;
+                    -o-transition: all 0.3s;
+                    transition: all 0.3s;
+                }
+
+                    .class-timetable table tbody tr td.hover-bg:hover {
+                        background: #EEEEEE;
+                    }
+
+                .class-timetable table tbody tr td.blank-td {
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                    .class-timetable table tbody tr td.blank-td:after {
+                        position: absolute;
+                        left: -47px;
+                        top: 59px;
+                        width: 237px;
+                        height: 1px;
+                        background: #363636;
+                        content: "";
+                        -webkit-transform: rotate(-40deg);
+                        -ms-transform: rotate(-40deg);
+                        transform: rotate(-40deg);
+                    }
+
+                .class-timetable table tbody tr td h5 {
+                    color: #ffffff;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                }
+
+                .class-timetable table tbody tr td span {
+                    display: block;
+                    font-size: 12px;
+                    color: #111111;
+                }
+
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+
+                        <div class="bt-option">
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <section class=" spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <span>Tìm thời gian của bạn</span>
+                        @*  <h2 class="text-dark">Lịch học cho ngày @Model.ToShortDateString()</h2> *@
+                        <h2 class="text-dark">Lịch học</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="table-controls">
+                        @* <ul>
+                        <li class="active" data-tsfilter="all">All event</li>
+                        <li data-tsfilter="fitness">Fitness tips</li>
+                        <li data-tsfilter="motivation">Motivation</li>
+                        <li data-tsfilter="workout">Workout</li>
+                        </ul> *@
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="class-timetable">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Thứ 2</th>
+                                    <th>Thứ 3</th>
+                                    <th>Thứ 4</th>
+                                    <th>Thứ 5</th>
+                                    <th>Thứ 6</th>
+                                    <th>Thứ 7</th>
+                                    <th>Chủ nhật</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="class-time">6.00am - 8.00am</td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 2", new TimeOnly(6, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 3", new TimeOnly(6, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 4", new TimeOnly(6, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 5", new TimeOnly(6, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 6", new TimeOnly(6, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 7", new TimeOnly(6, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Chủ Nhật", new TimeOnly(6, 0))</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="class-time">10.00am - 12.00am</td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 2", new TimeOnly(10, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 3", new TimeOnly(10, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 4", new TimeOnly(10, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 5", new TimeOnly(10, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 6", new TimeOnly(10, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 7", new TimeOnly(10, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Chủ nhật", new TimeOnly(10, 0))</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="class-time">5.00pm - 7.00pm</td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 2", new TimeOnly(17, 0))</span>
+
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 3", new TimeOnly(17, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 4", new TimeOnly(17, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 5", new TimeOnly(17, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 6", new TimeOnly(17, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 7", new TimeOnly(17, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Chủ nhật", new TimeOnly(17, 0))</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="class-time">7.00pm - 9.00pm</td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 2", new TimeOnly(19, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 3", new TimeOnly(19, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 4", new TimeOnly(19, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 5", new TimeOnly(19, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 6", new TimeOnly(19, 0))</span>
+                                    </td>
+                                    <td class="dark-bg hover-bg ts-meta">
+                                        <span>@GetClassInfo("Thứ 7", new TimeOnly(19, 0))</span>
+                                    </td>
+                                    <td class="hover-bg ts-meta">
+                                        <span>@GetClassInfo("Chủ Nhật", new TimeOnly(19, 0))</span>
+                                    </td>
+                                </tr>
+                                <!-- Thêm các dòng và cột tiếp theo tương tự -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @*  Room = reader.GetString(reader.GetOrdinal("room")) *@
+    @functions {
+        string GetClassInfo(string weekday, TimeOnly startTime)
+        {
+            List<ClassSchedule> GetClassSchedules()
+            {
+                string connectionString = "Data Source=LAPTOP-T4RGGNJJ;Initial Catalog=DACS;Integrated Security=True";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM ClassSchedules"; // Thay đổi truy vấn theo cấu trúc bảng của bạn
+                    var classSchedules = new List<ClassSchedule>();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var classSchedule = new ClassSchedule
+                                {
+                                    Weekday = reader.GetString(reader.GetOrdinal("weekday")),
+                                    StartTime = TimeOnly.Parse(reader.GetTimeSpan(reader.GetOrdinal("start_time")).ToString(@"hh\:mm")),
+                                    ClassId = reader.GetInt32(reader.GetOrdinal("class_id")),
+
+                                };
+                                classSchedules.Add(classSchedule);
+                            }
+                        }
+                    }
+                    return classSchedules;
+                }
+            }
+
+            string GetTrainerFullName(int? classId)
+            {
+                if (classId == null)
+                {
+                    return string.Empty;
+                }
+
+                string connectionString = "Data Source=LAPTOP-T4RGGNJJ;Initial Catalog=DACS;Integrated Security=True";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT Trainers.full_name FROM Trainers " +
+                    "INNER JOIN Classes ON Trainers.trainer_id = Classes.trainer_id " +
+                    "WHERE Classes.class_id = @ClassId";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ClassId", classId);
+
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return result.ToString();
+                        }
+                    }
+                }
+                return string.Empty;
+            }
+
+            string GetClassType(int? classId)
+            {
+                if (classId == null)
+                {
+                    return string.Empty;
+                }
+
+                string connectionString = "Data Source=LAPTOP-T4RGGNJJ;Initial Catalog=DACS;Integrated Security=True";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT class_type FROM Classes WHERE class_id = @ClassId";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ClassId", classId);
+
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return result.ToString();
+                        }
+                    }
+                }
+                return string.Empty;
+            }
+
+            var classSchedules = GetClassSchedules();
+            var matchingSchedule = classSchedules.FirstOrDefault(s => s.Weekday == weekday && s.StartTime.Equals(startTime));
+
+            if (matchingSchedule != null)
+            {
+                string trainerFullName = GetTrainerFullName(matchingSchedule.ClassId);
+                string classType = GetClassType(matchingSchedule.ClassId);
+                // Tách kết quả thành hai chuỗi riêng biệt
+                string classInfo = $"Lớp: {classType}";
+                string trainerInfo = $"HLV: {trainerFullName}";
+
+                // Kết hợp hai chuỗi lại với nhau, sử dụng xuống dòng để tách
+                return $"{classInfo}\n{trainerInfo}";
+
+            }
+            else
+            {
+                return "Chưa có lớp";
+            }
+        }
+    }
+</body>
+</html>
+
+

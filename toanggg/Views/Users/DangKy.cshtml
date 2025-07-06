@@ -1,0 +1,182 @@
+﻿    @model toanggg.Models.RegisterVM
+
+@{
+    ViewData["Title"] = "DangKy";
+    Layout = "_LayoutCustomer";
+}
+
+<!-- Flatpickr CSS -->
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- Flatpickr Vietnamese Language -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
+
+<style>
+    .flatpickr-current-month {
+        font-size: 100%;
+        line-height: inherit;
+        font-weight: 300;
+        color: inherit;
+        position: absolute;
+        width: 75%;
+        left: 12.5%;
+        padding: 7.48px 0 0 0;
+        line-height: 1;
+        height: 34px;
+        display: inline-block;
+        text-align: center;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .text-rbg {
+        color: rgb(0, 149, 246, 1); /* Màu chữ ban đầu */
+    }
+
+        .text-rbg:hover {
+            color: rgb(0, 149, 246, 0.5); /* Màu chữ khi hover */
+        }
+
+</style>
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <div class="bt-option">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<div class="container-fluid add-form-list spad">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Đăng ký người dùng</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="DangKyNhanVien" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Username" class="control-label">Tên đăng nhập</label>
+                                    <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" data-errors="Vui lòng nhập tên đăng nhập." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label">Mật khẩu</label>
+                                    <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu" data-errors="Vui lòng nhập mật khẩu." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" placeholder="Nhập địa chỉ email" data-errors="Vui lòng nhập địa chỉ email." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="FullName" class="control-label">Họ và tên</label>
+                                    <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên" data-errors="Vui lòng nhập đầy đủ họ và tên." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại" data-errors="Vui lòng nhập số điện thoại." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Giới tính:</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Male">
+                                        <label class="form-check-label" for="male">Nam</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Gender" id="female" value="Female">
+                                        <label class="form-check-label" for="female">Nữ</label>
+                                    </div>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Dob" class="control-label">Ngày sinh</label>
+                                    <input asp-for="Dob" type="text" class="form-control" id="dobPicker" placeholder="Nhập ngày sinh" data-errors="Vui lòng nhập ngày sinh." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label">Địa chỉ</label>
+                                    <input asp-for="Address" class="form-control" placeholder="Nhập địa chỉ" data-errors="Vui lòng nhập địa chỉ." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Avatar" class="control-label">Hình ảnh</label>
+                                    <input asp-for="Avatar" type="file" class="form-control" placeholder="Tải hình lên" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*   <div class="form-group">
+                                    <label asp-for="Status" class="control-label color-text">Trạng thái:</label>
+                                    <input asp-for="Status" class="form-control" />
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                    </div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary mr-2 mt-3">Xác nhận thông tin</button>
+                                    <h5 class="text-center mt-3">
+                                        <a class="text-muted">Bạn đã có tài khoản?</a>
+                                        <a class="text-rbg" asp-controller="Users" asp-action="DangNhap">Đăng nhập</a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("#dobPicker", {
+            dateFormat: "d/m/Y",
+            allowInput: true,
+            altInput: true,
+            altFormat: "d/m/Y",
+            defaultDate: new Date(),
+            locale: "vn" // Set the locale to Vietnamese
+        });
+    });
+</script>
+
+
+
+
+
+
+

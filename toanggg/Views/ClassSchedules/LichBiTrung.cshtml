@@ -1,0 +1,46 @@
+﻿@model toanggg.Models.ConflictViewModel
+
+@{
+    ViewData["Title"] = "Lịch bị trùng";
+}
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <div class="bt-option">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<h2>Lịch bị trùng</h2>
+
+<p>Huấn luyện viên @Model.TrainerFullName có lịch bị trùng vào những thời gian sau:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ngày trong tuần</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var schedule in Model.ConflictingSchedules)
+        {
+            <tr>
+                <td>@schedule.Weekday</td>
+                <td>@schedule.StartTime</td>
+                <td>@schedule.EndTime</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Vui lòng chọn khung giờ khác.</p>
+
+<a href="@Url.Action("Index", "ClassSchedules")" class="btn btn-primary">Trở lại</a>

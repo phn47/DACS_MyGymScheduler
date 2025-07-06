@@ -1,0 +1,59 @@
+﻿@model toanggg.Data.MembershipType
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class=" spad">
+    <h1>Details</h1>
+
+    <div>
+        <h4>MembershipType</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AccessHours)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AccessHours)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GymTypeAccessNavigation)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GymTypeAccessNavigation.GymTypeId)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.MembershipTypeId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+

@@ -1,0 +1,447 @@
+﻿@model toanggg.Data.UserMembership
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutCustomer";
+}
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+    .form-group {
+        border: 1px solid #c4c4c4; /* Màu và kích thước đường viền */
+        padding: 15px; /* Khoảng cách giữa đường viền và nội dung bên trong */
+        margin-bottom: 20px; /* Khoảng cách giữa các nhóm */
+        border-radius: 5px; /* Bo tròn các góc */
+    }
+
+    .color-text {
+        color: #c4c4c4;
+    }
+
+    .submit {
+        width: 100%;
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+        .submit button[type="submit"] {
+            font-size: 14px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: none;
+            padding: 14px 0 12px;
+            background: #f36100;
+            width: 100%;
+            border-radius: 5px; /* Bo tròn các góc */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Hiệu ứng màu nền */
+        }
+
+            .submit button[type="submit"]:hover {
+                background: #d35400; /* Màu nền khi di chuột vào */
+            }
+    /* Reset CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Style cho bảng */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px 16px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        border-left: 1px solid #ddd; /* Thêm viền trái */
+        border-right: 1px solid #ddd; /* Thêm viền phải */
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        text-align: center; /* Căn trái cho tiêu đề */
+        border: 1px solid #ddd; /* Thêm viền cho tiêu đề */
+    }
+
+    tr:nth-child(even) {
+        background-color: #fff; /* Màu nền cho dòng chẵn */
+    }
+
+    tr:nth-child(odd) {
+        background-color: #f2f2f2; /* Màu nền cho dòng lẻ */
+    }
+
+    .highlight {
+        font-weight: bold;
+    }
+
+    /* Style cho button */
+    .nav-link.button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        position: fixed;
+        top: 20px;
+    }
+
+        .nav-link.button:hover {
+            background-color: darkred;
+        }
+
+    /* Căn trái cho ô đầu tiên */
+    td:first-child {
+        text-align: left;
+    }
+
+    /* Ẩn ô đầu tiên */
+    th:first-child {
+        visibility: hidden;
+        border: none;
+    }
+
+    /* Style cho icon */
+    .icon {
+        font-size: 18px; /* Kích thước của icon */
+        color: #41B06E /* Màu sắc của icon */
+    }
+
+    .icon-close {
+        font-size: 18px; /* Kích thước của icon */
+        color: #D80032 /* Màu sắc của icon đóng */
+    }
+
+    .cs-item span {
+        height: 90px;
+        width: 90px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: inline-block;
+        color: #f36100;
+        line-height: 90px;
+        text-align: center;
+        position: relative; /* Add this line */
+        z-index: 1; /* Add this line */
+        outline: 10px solid #f36100; /* Add this line */
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+</style>
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+
+                    <div class="bt-option">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- ChoseUs Section Begin -->
+<section class=" spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Vì sao lại chọn chúng tôi?</span>
+                    <h2 class="text-dark">BỨT PHÁ GIỚI HẠN, TIẾN XA HƠN</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-034-stationary-bike"></span>
+                    <h4 class="text-dark">Thiết bị tập luyện cao cấp</h4>
+                    @* <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    dolore facilisis.
+                    </p> *@
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-033-juice"></span>
+                    <h4 class="text-dark">Kế hoạch dinh dưỡng lành mạnh</h4>
+                    @* <p>
+                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
+                    facilisis.
+                    </p> *@
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-002-dumbell"></span>
+                    <h4 class="text-dark">Kế hoạch đào tạo chuyên nghiệp</h4>
+                    @* <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    dolore facilisis.
+                    </p> *@
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-014-heart-beat"></span>
+                    <h4 class="text-dark">Thiết kế riêng cho nhu cầu của bạn</h4>
+                    @* <p>
+                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
+                    facilisis.
+                    </p> *@
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="currentColor"><path d="M0.689453 6.99659C3.78027 4.49704 7.71526 3 11.9999 3C16.2845 3 20.2195 4.49704 23.3104 6.99659L22.0536 8.55252C19.3062 6.3307 15.8085 5 11.9999 5C8.19133 5 4.69356 6.3307 1.94617 8.55252L0.689453 6.99659ZM3.83124 10.8864C6.0635 9.08119 8.90544 8 11.9999 8C15.0944 8 17.9363 9.08119 20.1686 10.8864L18.9118 12.4424C17.023 10.9149 14.6183 10 11.9999 10C9.38151 10 6.97679 10.9149 5.08796 12.4424L3.83124 10.8864ZM6.97304 14.7763C8.34673 13.6653 10.0956 13 11.9999 13C13.9042 13 15.6531 13.6653 17.0268 14.7763L15.7701 16.3322C14.7398 15.499 13.4281 15 11.9999 15C10.5717 15 9.26002 15.499 8.22975 16.3322L6.97304 14.7763ZM10.1148 18.6661C10.63 18.2495 11.2858 18 11.9999 18C12.714 18 13.3698 18.2495 13.885 18.6661L11.9999 21L10.1148 18.6661Z"></path></svg>
+
+                    </span>
+                    <h4 class="text-dark">Wifi miễn phí</h4>
+                    @* <p>
+                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
+                    facilisis.
+                    </p> *@
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="currentColor"><path d="M15.5006 6.93685C17.5926 8.14727 19 10.4093 19 13V21H14.8293C14.4175 22.1652 13.3062 23 12 23C10.6938 23 9.58254 22.1652 9.17071 21H5V13C5 10.4093 6.40741 8.14727 8.49936 6.93685C8.33754 6.645 8.21115 6.33078 8.12602 6H5V4H8.12602C8.57006 2.27477 10.1362 1 12 1C13.8638 1 15.4299 2.27477 15.874 4H19V6H15.874C15.7888 6.33078 15.6625 6.645 15.5006 6.93685ZM14.0474 8.43703C13.4484 8.79457 12.7482 9 12 9C11.2518 9 10.5516 8.79457 9.95263 8.43703C8.21207 9.21922 7 10.9681 7 13V19H9V15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15V19H17V13C17 10.9681 15.7879 9.21922 14.0474 8.43703ZM12 14C11.4477 14 11 14.4477 11 15V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V15C13 14.4477 12.5523 14 12 14ZM12 7C13.1046 7 14 6.10457 14 5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5C10 6.10457 10.8954 7 12 7Z"></path></svg>
+
+                    </span>
+                    <h4 class="text-dark">Đỗ xe miễn phí</h4>
+                    @* <p>
+                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
+                    facilisis.
+                    </p> *@
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="50" height="50" fill="currentColor"><path d="M64 131.9C64 112.1 80.1 96 99.9 96c9.5 0 18.6 3.8 25.4 10.5l16.2 16.2c-21 38.9-17.4 87.5 10.9 123L151 247c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0L345 121c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-1.3 1.3c-35.5-28.3-84.2-31.9-123-10.9L170.5 61.3C151.8 42.5 126.4 32 99.9 32C44.7 32 0 76.7 0 131.9V448c0 17.7 14.3 32 32 32s32-14.3 32-32V131.9zM256 352a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm64 64a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-128a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm64 64a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-128a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm64 64a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm32-32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" /></svg>
+
+                    </span>
+                    <h4 class="text-dark">Tắm nước nóng lạnh miễn phí</h4>
+                    @* <p>
+                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
+                    facilisis.
+                    </p> *@
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+
+                    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="currentColor"><path d="M12.0049 2C17.5277 2 22.0049 6.47715 22.0049 12C22.0049 17.5228 17.5277 22 12.0049 22C9.57847 22 7.3539 21.1358 5.62216 19.6985L5.37815 19.4892L6.27949 17.5875C7.73229 19.0759 9.76067 20 12.0049 20C16.4232 20 20.0049 16.4183 20.0049 12C20.0049 7.58172 16.4232 4 12.0049 4C7.66997 4 4.14034 7.44784 4.00869 11.7508L4.00488 12H6.50488L3.79854 17.7161C2.66796 16.096 2.00488 14.1254 2.00488 12C2.00488 6.47715 6.48204 2 12.0049 2ZM13.0049 6V8H15.5049V10H10.0049C9.72874 10 9.50488 10.2239 9.50488 10.5C9.50488 10.7455 9.68176 10.9496 9.91501 10.9919L10.0049 11H14.0049C15.3856 11 16.5049 12.1193 16.5049 13.5C16.5049 14.8807 15.3856 16 14.0049 16H13.0049V18H11.0049V16H8.50488V14H14.0049C14.281 14 14.5049 13.7761 14.5049 13.5C14.5049 13.2545 14.328 13.0504 14.0948 13.0081L14.0049 13H10.0049C8.62417 13 7.50488 11.8807 7.50488 10.5C7.50488 9.11929 8.62417 8 10.0049 8H11.0049V6H13.0049Z"></path></svg></span>
+                    <h4 class="text-dark">Thanh toán hàng tháng, không hợp đồng</h4>
+                    @* <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    dolore facilisis.
+                    </p> *@
+                </div>
+            </div>
+
+            <div class="col-lg-12 text-center">
+                <div class="bs-text">
+
+                    <a asp-area="" asp-controller="Users" asp-action="DangKy" class="primary-btn btn-normal text-dark">Đăng ký ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ChoseUs Section End -->
+
+<section class=" set-bg" data-setbg="/Hinh/HinhGym/sosanhgoi.jpg">
+    <div class=" spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="bs-text">
+                        @*  <h2>So sánh các gói thành viên</h2> *@
+
+                    </div>
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Gói 1 tháng</th>
+                    <th>Gói 3 tháng</th>
+                    <th>Gói 6 tháng</th>
+                </tr>
+
+                <tr>
+                    <td>Tập luyện tại 01 CLB đã chọn</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Tự do tập luyện tại tất cả câu lạc bộ trong hệ thống</td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Miễn phí hội viên</td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Tập luyện không giới hạn</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Gửi xe miễn phí</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Lớp học miễn phí</td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Nước uống miễn phí</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>1 buổi định hướng luyện tập riêng biệt và tư vấn dinh dưỡng</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Hỗ trợ 24/7</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Được sử dụng dịch vụ thư giãn sau luyện tập</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Hệ thống khóa từ thông minh, bảo mật tối ưu Esmart Locker</td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Buổi tập PT miễn phí</td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Dịch vụ khăn tập thể thao cao cấp</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Bộ đồ dùng tắm gội - vệ sinh cao cấp</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Được dẫn theo 1 người thân đi tập cùng</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Được tặng 01 ly nước trái cây hoặc ly sinh tố dinh dưỡng</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>01 lần chuyển nhượng cho người thân trong gia đình (Cha, Mẹ, Vợ, Chồng, Con, Anh Chị Em ruột, Con nuôi…) không thu phí</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Được ưu tiên đặt chỗ các lớp trước 48 tiếng (hôm nay và ngày mai)</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Lối vào check-in ưu tiên</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+                <tr>
+                    <td>Phục vụ thảm tập Yoga</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="ri-checkbox-circle-fill icon"></i></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</section>
+<div class=" spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2 class="text-dark">Đăng ký gói</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-5 container">
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="MembershipTypeId" class="control-label text-dark">Chọn gói</label>
+                        <select asp-for="MembershipTypeId" class="form-control" asp-items="ViewBag.MembershipTypeId"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="payment" class="btn border-secondary text-uppercase text-primary w-100 mt-2" value="Thanh toán VNPay">
+                    </div>
+                </form>
+                @* <div class="submit mt-2">
+                <a class="text-rbg" asp-action="Index">Trở về danh sách</a>
+                </div> *@
+            </div>
+        </div>
+    </div>
+</div>

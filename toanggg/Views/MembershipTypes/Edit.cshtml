@@ -1,0 +1,82 @@
+﻿@model toanggg.Data.MembershipType
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class="container-fluid edit-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Chỉnh sửa thông tin gói thẻ</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="hidden" asp-for="MembershipTypeId" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label">Họ tên</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Nhập tên gói" data-errors="Vui lòng nhập tên gói." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Mô tả</label>
+                                    <input asp-for="Description" class="form-control" placeholder="Nhập mô tả" data-errors="Vui lòng nhập mô tả." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="GymTypeAccess" class="control-label"></label>
+                                    <select asp-for="GymTypeAccess" class="form-control" asp-items="ViewBag.GymTypeAccess"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="AccessHours" class="control-label">Giò truy cập</label>
+                                    <input asp-for="AccessHours" class="form-control" placeholder="Nhập số giờ" data-errors="Vui lòng nhập số giờ." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Price" class="control-label">Giá gói</label>
+                                    <input asp-for="Price" class="form-control" placeholder="Nhập giá gói" data-errors="Vui lòng nhập giá gói." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Status" class="control-label">Trạng thái</label>
+                                    <input asp-for="Status" class="form-control" placeholder="Nhập trạng thái" data-errors="Vui lòng nhập trạng thái." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Cập nhật thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

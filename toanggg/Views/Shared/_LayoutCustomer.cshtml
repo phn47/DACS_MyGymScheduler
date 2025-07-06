@@ -1,0 +1,386 @@
+﻿
+<!DOCTYPE html>
+
+<html lang="vi-VN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Gym Template">
+    <meta name="keywords" content="Gym, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gym</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+
+    <style>
+        .search-model {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1050;
+            display: none;
+        }
+
+            .search-model .search-model-form {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .search-model .search-close-switch {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 30px;
+                cursor: pointer;
+            }
+    </style>
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <div>
+        <!-- Page Preloder -->
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+
+        <!-- Offcanvas Menu Section Begin -->
+        <div class="offcanvas-menu-overlay"></div>
+        <div class="offcanvas-menu-wrapper">
+            <div class="canvas-close">
+                <i class="fa fa-close"></i>
+            </div>
+            <div class="canvas-search search-switch">
+                <i class="fa fa-search"></i>
+            </div>
+            <nav class="canvas-menu mobile-menu">
+
+                <ul>
+                    @*  <li class="nav-item @(Context.Request.Path == "/Users/DangKy" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangKy">Đăng ký</a>
+                    </li>
+                    <li class="nav-item @(Context.Request.Path == "/Users/DangNhap" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangNhap">Đăng nhập</a>
+                    </li> *@
+                    @*      <li class="nav-item @(Context.Request.Path == "/Trainers/ViewPin" || Context.Request.Path == "/Trainers/DangKyNhanVien" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Trainers" asp-action="DangKyNhanVien">Thêm trainer</a>
+                    </li> *@
+                    @*   <li class="nav-item @(Context.Request.Path == "/Gyms/Create" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Gyms" asp-action="Create">Thêm phòng GYM</a>
+                    </li> *@
+                    <li class="nav-item @(Context.Request.Path == "/Gyms/HeThongGym" ? "active" : "")">
+                        <a class="nav-link" asp-area="" asp-controller="Gyms" asp-action="HeThongGym">Hệ thống phòng Gym</a>
+                    </li>
+                    @*   <li class="nav-item @(Context.Request.Path == "/Users/Member" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Member">Đặc quyền hội viên</a>
+                    </li> *@
+                    @*    <li class="nav-item @(Context.Request.Path == "/Trainers/Index" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Trainers" asp-action="Index">Danh sách Trainer</a>
+                    </li> *@
+                    @*  <li class="nav-item @(Context.Request.Path == "/Classes/Create" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Classes" asp-action="Create">Thêm lớp học</a>
+                    </li> *@
+                    <li class="nav-item @(Context.Request.Path == "/ClassSchedules/LichTrinh" ? "active" : "")">
+                        <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="LichTrinh">Hiển thị lịch trình</a>
+                    </li>
+                    @*         <li class="nav-item @(Context.Request.Path == "/ClassSchedules/Create" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="Create">Đăng ký lịch</a>
+                    </li> *@
+                    @* <li class="nav-item @(Context.Request.Path == "/GymTypes/Create" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="GymTypes" asp-action="Create">
+                    Thêm kiểu <picture>
+                    <source media="(min-width: 465px)" srcset="file-small.jpg" />
+                    <source media="(min-width: 650px)" srcset="file-medium.jpg" />
+                    <img src="file.jpg" alt="" />
+                    </picture>
+                    </a>
+                    </li> *@
+
+                    @*    <li class="nav-item @(Context.Request.Path == "/MembershipTypes/Create" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="MembershipTypes" asp-action="Create">Thêm mới kiểu thẻ</a>
+                    </li> *@
+                    @* <li class="nav-item @(Context.Request.Path == "/GymTypes/Create" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="GymTypes" asp-action="Create">Thêm loại đăng ký</a>
+                    </li> *@
+                    @*  <li class="nav-item @(Context.Request.Path == "/Users/DangXuat" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangNhap">Đăng Xuất</a>
+                    </li> *@
+                    <li class="nav-item @(Context.Request.Path == "/UserMemberships/Create" ? "active" : "")">
+                        <a class="nav-link" asp-area="" asp-controller="UserMemberships" asp-action="Create">Đăng ký gói</a>
+                    </li>
+                    @*  <li class="nav-item @(Context.Request.Path == "/UserMemberships/Revenue" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="UserMemberships" asp-action="Revenue">Doanh thu</a>
+                    </li> *@
+                    @* <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="DanKyGoi">Đăng ký gói</a>
+                    </li> *@
+                    <li class="nav-item @(Context.Request.Path == "/Users/IBD" ? "active" : "")">
+                        <a class="nav-link" asp-area="" asp-controller="Users" asp-action="IBD">Đo BMI</a>
+                    </li>
+
+                    <li class="nav-item @(Context.Request.Path == "/Users/DangKyLop" ? "active" : "")">
+                        <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangKyLop">Đăng ký lớp</a>
+                    </li>
+                    @* <li class="nav-item @(Context.Request.Path == "/Gyms/HeThongGym" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Gyms" asp-action="HeThongGym">Đăng ký lớp</a>
+                    </li> *@
+                    @*  <li class="nav-item @(Context.Request.Path == "/Classes/HuanLuyenRieng" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Classes" asp-action="HuanLuyenRieng">Đăng ký PT</a> bỏ vào db trainer
+                    </li> *@
+                    <li class="nav-item @(Context.Request.Path == "/ClassSchedules/DangKyLopPT" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="DangKyLopPT">Admin xác nhận PT đăng ký</a>
+                    </li>
+
+                    @* <li class="nav-item @(Context.Request.Path == "/ClassSchedules/CheckInClass" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="CheckInClass">Test mail mỗi ngày</a>
+                    </li> *@
+                    @* <li class="nav-item @(Context.Request.Path == "/Search/Search" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Search" asp-action="Search">De xuat</a>
+                    </li> *@
+
+                    @*   <li class="nav-item @(Context.Request.Path == "/Users/Logout" ? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Logout">Test mail mỗi ngày</a>
+                    </li> *@
+                    <li>
+                        <a href="#">Huấn luyện viên</a>
+                        <ul class="dropdown">
+                            <li class="nav-item @(Context.Request.Path == "/Trainers/TrainerLaAi" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Trainers" asp-action="TrainerLaAi">Danh sách huấn luyện viên</a>
+                            </li>
+                            <li class="nav-item @(Context.Request.Path == "/ClassSchedules/DisplaySchedulesWithNullRoom" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="DisplaySchedulesWithNullRoom">Thuê huấn luyện viên tự do</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+                    <li>
+                        <a href="#">Tài khoản</a>
+                        <ul class="dropdown">
+                            <li class="nav-item @(Context.Request.Path == "/Users/DangKy" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangKy">Đăng ký</a>
+                            </li>
+                            <li class="nav-item @(Context.Request.Path == "/Users/DangNhap" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangNhap">Đăng nhập</a>
+                            </li>
+                            <li class="nav-item @(Context.Request.Path == "/Users/DangXuat" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangXuat">Đăng Xuất</a>
+                            </li>
+                            <li class="nav-item @(Context.Request.Path == "/Users/ThongTinCaNhan" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="ThongTinCaNhan">Thông tin cá nhân</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div id="mobile-menu-wrap"></div>
+            <div class="canvas-social">
+                <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+        <!-- Offcanvas Menu Section End -->
+        <!-- Header Section Begin -->
+        <header class="header-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <nav class="nav-menu">
+                            <ul>
+                                @*  <li class="nav-item @(Context.Request.Path == "/Users/DangKy" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangKy">Đăng ký</a>
+                                </li>
+                                <li class="nav-item @(Context.Request.Path == "/Users/DangNhap" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangNhap">Đăng nhập</a>
+                                </li> *@
+                                @*      <li class="nav-item @(Context.Request.Path == "/Trainers/ViewPin" || Context.Request.Path == "/Trainers/DangKyNhanVien" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Trainers" asp-action="DangKyNhanVien">Thêm trainer</a>
+                                </li> *@
+                                @*   <li class="nav-item @(Context.Request.Path == "/Gyms/Create" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Gyms" asp-action="Create">Thêm phòng GYM</a>
+                                </li> *@
+                                <li class="nav-item @(Context.Request.Path == "/Gyms/HeThongGym" ? "active" : "")">
+                                    <a class="nav-link" asp-area="" asp-controller="Gyms" asp-action="HeThongGym">Hệ thống phòng Gym</a>
+                                </li>
+                                @* <li class="nav-item @(Context.Request.Path == "/Users/Member" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Member">Đặc quyền hội viên</a>
+                                </li> *@
+                                @*    <li class="nav-item @(Context.Request.Path == "/Trainers/Index" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Trainers" asp-action="Index">Danh sách Trainer</a>
+                                </li> *@
+                                @*  <li class="nav-item @(Context.Request.Path == "/Classes/Create" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Classes" asp-action="Create">Thêm lớp học</a>
+                                </li> *@
+                                <li class="nav-item @(Context.Request.Path == "/ClassSchedules/LichTrinh" ? "active" : "")">
+                                    <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="LichTrinh">Hiển thị lịch trình</a>
+                                </li>
+                                @*         <li class="nav-item @(Context.Request.Path == "/ClassSchedules/Create" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="Create">Đăng ký lịch</a>
+                                </li> *@
+                                @* <li class="nav-item @(Context.Request.Path == "/GymTypes/Create" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="GymTypes" asp-action="Create">
+                                Thêm kiểu <picture>
+                                <source media="(min-width: 465px)" srcset="file-small.jpg" />
+                                <source media="(min-width: 650px)" srcset="file-medium.jpg" />
+                                <img src="file.jpg" alt="" />
+                                </picture>
+                                </a>
+                                </li> *@
+
+                                @*    <li class="nav-item @(Context.Request.Path == "/MembershipTypes/Create" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="MembershipTypes" asp-action="Create">Thêm mới kiểu thẻ</a>
+                                </li> *@
+                                @* <li class="nav-item @(Context.Request.Path == "/GymTypes/Create" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="GymTypes" asp-action="Create">Thêm loại đăng ký</a>
+                                </li> *@
+                                @*  <li class="nav-item @(Context.Request.Path == "/Users/DangXuat" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangNhap">Đăng Xuất</a>
+                                </li> *@
+                                <li class="nav-item @(Context.Request.Path == "/UserMemberships/Create" ? "active" : "")">
+                                    <a class="nav-link" asp-area="" asp-controller="UserMemberships" asp-action="Create">Đăng ký gói</a>
+                                </li>
+                                @*  <li class="nav-item @(Context.Request.Path == "/UserMemberships/Revenue" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="UserMemberships" asp-action="Revenue">Doanh thu</a>
+                                </li> *@
+                                @* <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="DanKyGoi">Đăng ký gói</a>
+                                </li> *@
+                                <li class="nav-item @(Context.Request.Path == "/Users/IBD" ? "active" : "")">
+                                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="IBD">Đo BMI</a>
+                                </li>
+
+                                <li class="nav-item @(Context.Request.Path == "/Users/DangKyLop" ? "active" : "")">
+                                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangKyLop">Đăng ký lớp</a>
+                                </li>
+                                @* <li class="nav-item @(Context.Request.Path == "/Gyms/HeThongGym" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Gyms" asp-action="HeThongGym">Đăng ký lớp</a>
+                                </li> *@
+                                @*  <li class="nav-item @(Context.Request.Path == "/Classes/HuanLuyenRieng" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Classes" asp-action="HuanLuyenRieng">Đăng ký PT</a>
+                                </li> *@
+                            @*     <li class="nav-item @(Context.Request.Path == "/ClassSchedules/DangKyLopPT" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="DangKyLopPT">Admin xác nhận PT đăng ký</a>
+                                </li>
+ *@
+                                @* <li class="nav-item @(Context.Request.Path == "/ClassSchedules/CheckInClass" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="CheckInClass">Test mail mỗi ngày</a>
+                                </li> *@
+                                @* <li class="nav-item @(Context.Request.Path == "/Search/Search" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Search" asp-action="Search">De xuat</a>
+                                </li> *@
+
+                                @*  <li class="nav-item @(Context.Request.Path == "/Users/Logout" ? "active" : "")">
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Logout">Test mail mỗi ngày</a>
+                                </li> *@
+                                <li>
+                                    <a href="#">Huấn luyện viên</a>
+                                    <ul class="dropdown">
+                                        <li class="nav-item @(Context.Request.Path == "/Trainers/TrainerLaAi" ? "active" : "")">
+                                            <a class="nav-link" asp-area="" asp-controller="Trainers" asp-action="TrainerLaAi">Danh sách huấn luyện viên</a>
+                                        </li>
+                                        <li class="nav-item @(Context.Request.Path == "/ClassSchedules/DisplaySchedulesWithNullRoom" ? "active" : "")">
+                                            <a class="nav-link" asp-area="" asp-controller="ClassSchedules" asp-action="DisplaySchedulesWithNullRoom">Thuê huấn luyện viên tự do</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#">Tài khoản</a>
+                                    <ul class="dropdown">
+                                        <li class="nav-item @(Context.Request.Path == "/Users/DangKy" ? "active" : "")">
+                                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangKy">Đăng ký</a>
+                                        </li>
+                                        <li class="nav-item @(Context.Request.Path == "/Users/DangNhap" ? "active" : "")">
+                                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangNhap">Đăng nhập</a>
+                                        </li>
+                                        <li class="nav-item @(Context.Request.Path == "/Users/DangXuat" ? "active" : "")">
+                                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="DangXuat">Đăng Xuất</a>
+                                        </li>
+                                        <li class="nav-item @(Context.Request.Path == "/Users/ThongTinCaNhan" ? "active" : "")">
+                                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="ThongTinCaNhan">Thông tin cá nhân</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="top-option">
+                            <div class="to-search search-switch">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="to-social">
+                                <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.youtube.com/"><i class="fa fa-youtube-play"></i></a>
+                                <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas-open">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Model Begin -->
+        <div class="search-model">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div class="search-close-switch">+</div>
+                <form class="search-model-form" asp-area="" asp-controller="Search" asp-action="Search2" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search here.....">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Search Model End -->
+
+        <div>
+            @RenderBody()
+            @await Html.PartialAsync("_Footer")
+        </div>
+
+        <!-- Js Plugins -->
+        <script src="~/js/jquery-3.3.1.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/js/masonry.pkgd.min.js"></script>
+        <script src="~/js/jquery.barfiller.js"></script>
+        <script src="~/js/jquery.slicknav.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+        <script src="~/js/main.js"></script>
+
+        @RenderSection("Scripts", required: false)
+
+</body>
+</html>

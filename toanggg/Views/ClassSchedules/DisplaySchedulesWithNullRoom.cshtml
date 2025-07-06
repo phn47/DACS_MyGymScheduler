@@ -1,0 +1,247 @@
+﻿@model IEnumerable<toanggg.Data.ClassSchedule>
+
+@{
+    ViewData["Title"] = "Lịch trình có phòng trống";
+    Layout = "_LayoutCustomer";
+}
+
+@* <h2>Lịch trình với Null Room</h2>
+<form method="post" asp-action="DangKyLopPT2">
+    <label for="trainerFullName">Chọn Huấn luyện viên:</label>
+    <select name="trainerFullName" id="trainerFullName">
+        @foreach (var item in Model)
+        {
+            <option value="@item.Class?.Trainer?.FullName">@item.Class?.Trainer?.FullName</option>
+        }
+    </select>
+
+    <div class="form-group">
+        <label for="shiftSelect" class="control-label color-text">Ca làm việc</label>
+        <select id="shiftSelect" name="shiftSelect" class="form-control">
+            <option value="Ca1">Ca 1 (6h đến 8h)</option>
+            <option value="Ca2">Ca 2 (10h đến 12h)</option>
+            <option value="Ca3">Ca 3 (17h đến 19h)</option>
+            <option value="Ca4">Ca 4 (19h đến 21h)</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input id="startTimeInput" name="startTimeInput" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <input id="endTimeInput" name="endTimeInput" class="form-control" readonly />
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ngày</th>
+                <th>Chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Thứ Hai</td>
+                <td><input type="checkbox" name="weekdays" value="2"></td>
+            </tr>
+            <tr>
+                <td>Thứ Ba</td>
+                <td><input type="checkbox" name="weekdays" value="3"></td>
+            </tr>
+            <tr>
+                <td>Thứ Tư</td>
+                <td><input type="checkbox" name="weekdays" value="4"></td>
+            </tr>
+            <tr>
+                <td>Thứ Năm</td>
+                <td><input type="checkbox" name="weekdays" value="5"></td>
+            </tr>
+            <tr>
+                <td>Thứ Sáu</td>
+                <td><input type="checkbox" name="weekdays" value="6"></td>
+            </tr>
+            <tr>
+                <td>Thứ Bảy</td>
+                <td><input type="checkbox" name="weekdays" value="7"></td>
+            </tr>
+            <tr>
+                <td>Chủ Nhật</td>
+                <td><input type="checkbox" name="weekdays" value="8"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="submit">Đăng ký</button>
+</form> *@
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <div class="bt-option">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<div class="container-fluid add-form-list spad">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Lịch trình với các huấn luyện viên tự do</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="DangKyLopPT2" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="trainerFullName" class="control-label">Chọn Huấn luyện viên:</label>
+                                    <select name="trainerFullName" id="trainerFullName" class="form-control">
+                                        @foreach (var item in Model)
+                                        {
+                                            <option value="@item.Class?.Trainer?.FullName">@item.Class?.Trainer?.FullName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shiftSelect" class="control-label color-text">Ca làm việc</label>
+                                    <select id="shiftSelect" class="form-control">
+                                        <option value="Ca1">Ca 1 (6h đến 8h)</option>
+                                        <option value="Ca2">Ca 2 (10h đến 12h)</option>
+                                        <option value="Ca3">Ca 3 (17h đến 19h)</option>
+                                        <option value="Ca4">Ca 4 (19h đến 21h)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="startTimeInput" class="form-label">Thời gian bắt đầu</label>
+                                    <input id="startTimeInput" name="startTimeInput" class="form-control" readonly />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="endTimeInput" class="form-label">Thời gian kết thúc</label>
+                                    <input id="endTimeInput" name="endTimeInput" class="form-control" readonly />
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <label class="form-label">Chọn ngày làm việc</label>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Ngày</th>
+                                                <th>Chọn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Thứ Hai</td>
+                                                <td><input type="checkbox" name="weekdays" value="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thứ Ba</td>
+                                                <td><input type="checkbox" name="weekdays" value="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thứ Tư</td>
+                                                <td><input type="checkbox" name="weekdays" value="4"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thứ Năm</td>
+                                                <td><input type="checkbox" name="weekdays" value="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thứ Sáu</td>
+                                                <td><input type="checkbox" name="weekdays" value="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thứ Bảy</td>
+                                                <td><input type="checkbox" name="weekdays" value="7"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chủ Nhật</td>
+                                                <td><input type="checkbox" name="weekdays" value="8"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Đăng ký</button>
+                                    @* <div type="submit" class="btn mr-2">
+                                    <a asp-action="Index">Trở về danh sách</a>
+                                    </div> *@
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var maxChecked = 3;
+        var checkedCount = 0;
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    checkedCount++;
+                } else {
+                    checkedCount--;
+                }
+                if (checkedCount > maxChecked) {
+                    this.checked = false;
+                    alert("Bạn chỉ có thể chọn tối đa 3 ngày trong tuần.");
+                    checkedCount--;
+                }
+            });
+        });
+
+        document.getElementById('shiftSelect').addEventListener('change', function () {
+            var selectedShift = this.value;
+
+            switch (selectedShift) {
+                case 'Ca1':
+                    document.getElementById('startTimeInput').value = '06:00:00';
+                    document.getElementById('endTimeInput').value = '08:00:00';
+                    break;
+                case 'Ca2':
+                    document.getElementById('startTimeInput').value = '10:00:00';
+                    document.getElementById('endTimeInput').value = '12:00:00';
+                    break;
+                case 'Ca3':
+                    document.getElementById('startTimeInput').value = '17:00:00';
+                    document.getElementById('endTimeInput').value = '19:00:00';
+                    break;
+                case 'Ca4':
+                    document.getElementById('startTimeInput').value = '19:00:00';
+                    document.getElementById('endTimeInput').value = '21:00:00';
+                    break;
+                default:
+                    document.getElementById('startTimeInput').value = '';
+                    document.getElementById('endTimeInput').value = '';
+                    break;
+            }
+        });
+    });
+</script>

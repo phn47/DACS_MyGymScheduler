@@ -1,0 +1,138 @@
+﻿@model toanggg.Data.Gym
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class="container-fluid Delete-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thông tin phòng tập</h4>
+                        <p class="mb-0">
+                            Bạn có chắc chắn muốn xóa thông tin phòng tập này không?
+                        </p>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Delete" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="hidden" asp-for="GymId" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label">Tên phòng tập</label>
+                                    <input asp-for="Name" readonly class="form-control" placeholder="Nhập tên phòng tập" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label">Địa chỉ</label>
+                                    <input asp-for="Address" readonly class="form-control" placeholder="Nhập địa chỉ phòng tập" />
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
+                                    <input asp-for="PhoneNumber" readonly class="form-control" placeholder="Nhập số điện thoại" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" readonly class="form-control" placeholder="Nhập địa chỉ email" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Mô tả</label>
+                                    <input asp-for="Description" readonly class="form-control" placeholder="Nhập mô tả" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Website" class="control-label">Địa chỉ Website</label>
+                                    <input asp-for="Website" readonly class="form-control" placeholder="Nhập địa chỉ website" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="OpenHours" class="control-label">Giờ mở cửa</label>
+                                    <input asp-for="OpenHours" readonly type="time" class="form-control" placeholder="Nhập Giờ mở cửa" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CloseHours" class="control-label">Giờ đóng cửa</label>
+                                    <input asp-for="CloseHours" readonly type="time" class="form-control" placeholder="Nhập giờ đóng cửa" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PriceRange" class="control-label">Phạm vi giá</label>
+                                    <input asp-for="PriceRange" readonly class="form-control" placeholder="Nhập phạm vi giá" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Amenities" class="control-label">Tiện nghi</label>
+                                    <input asp-for="Amenities" readonly class="form-control" placeholder="Nhập tiện nghi" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Images" class="control-label">Hình ảnh</label>
+                                    <input asp-for="Images" readonly class="form-control" placeholder="Chọn hình ảnh" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label asp-for="Rating" class="control-label">Xếp hạng</label>
+                                    <input asp-for="Rating" readonly class="form-control" placeholder="Nhập xếp hạng" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label asp-for="Status" class="control-label">Trạng thái</label>
+                                    <input asp-for="Status" readonly class="form-control" placeholder="Nhập trạng thái" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Xóa thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

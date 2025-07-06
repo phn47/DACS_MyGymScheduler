@@ -1,0 +1,154 @@
+﻿@model toanggg.Data.Gym
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutDashBoard";
+}
+
+<!-- Flatpickr CSS -->
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Chỉnh sửa thông tin phòng tập</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post" data-toggle="validator" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <input type="hidden" asp-for="GymId" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label">Tên phòng tập</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Nhập tên phòng tập" data-errors="Vui lòng nhập tên phòng tập." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label">Địa chỉ</label>
+                                    <input asp-for="Address" class="form-control" placeholder="Nhập địa chỉ phòng tập" data-errors="Vui lòng nhập địa chỉ phòng tập." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại" data-errors="Vui lòng nhập số điện thoại." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" placeholder="Nhập địa chỉ email" data-errors="Vui lòng nhập địa chỉ email." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Mô tả</label>
+                                    <input asp-for="Description" class="form-control" placeholder="Nhập mô tả" data-errors="Vui lòng nhập mô tả." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Website" class="control-label">Địa chỉ Website</label>
+                                    <input asp-for="Website" class="form-control" placeholder="Nhập địa chỉ website" data-errors="Vui lòng nhập địa chỉ website." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="OpenHours" class="control-label">Giờ mở cửa</label>
+                                    <input asp-for="OpenHours" type="time" class="form-control" placeholder="Nhập Giờ mở cửa" data-errors="Vui lòng nhập giờ mở cửa." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CloseHours" class="control-label">Giờ đóng cửa</label>
+                                    <input asp-for="CloseHours" type="time" class="form-control" placeholder="Nhập giờ đóng cửa" data-errors="Vui lòng nhập giờ đóng cửa." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PriceRange" class="control-label">Phạm vi giá</label>
+                                    <input asp-for="PriceRange" class="form-control" placeholder="Nhập phạm vi giá" data-errors="Vui lòng nhập phạm vi giá." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Amenities" class="control-label">Tiện nghi</label>
+                                    <input asp-for="Amenities" class="form-control" placeholder="Nhập tiện nghi" data-errors="Vui lòng nhập tiện nghi." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Images" class="control-label">Hình ảnh</label>
+                                    <input asp-for="Images" type="file" class="form-control" placeholder="Chọn hình ảnh" data-errors="Vui lòng chọn hình ảnh." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label asp-for="Rating" class="control-label">Xếp hạng</label>
+                                    <input asp-for="Rating" class="form-control" placeholder="Nhập xếp hạng" data-errors="Vui lòng nhập xếp hạng." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label asp-for="Status" class="control-label">Trạng thái</label>
+                                    <input asp-for="Status" class="form-control" placeholder="Nhập trạng thái" data-errors="Vui lòng nhập trạng thái." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Cập nhật thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("#timePicker", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "h:i K",
+            time_24hr: false,
+            defaultHour: 12,
+            defaultMinute: 0
+        });
+    });
+</script> *@
+

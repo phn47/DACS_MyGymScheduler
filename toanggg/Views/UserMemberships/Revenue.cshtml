@@ -1,0 +1,93 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Revenue";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                <div>
+                    <h4 class="mb-3">Doanh thu</h4>
+                    <p class="mb-0">
+                        Cung cấp thông tin chi tiết về doanh thu hàng tháng. Giúp người dùng hiểu rõ về các con số.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-12">
+
+
+            <div>
+                <canvas id="revenueChart" width="400" height="400"></canvas>
+            </div>
+            @* <div>
+            Chọn năm:
+            <select id="yearSelect" onchange="onYearSelectChange()">
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <!-- Thêm các option khác nếu cần -->
+            </select>
+            </div>
+            *@
+            @section scripts {
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    var ctx = document.getElementById('revenueChart').getContext('2d');
+                    var revenueData = @Html.Raw(Json.Serialize(Model));
+
+                    var months = [];
+                    var revenues = [];
+
+                    for (var i = 1; i <= 12; i++) {
+                        var monthData = revenueData.find(data => data.month === i);
+                        if (monthData) {
+                            months.push(monthData.month);
+                            revenues.push(monthData.revenue);
+                        } else {
+                            months.push(i);
+                            revenues.push(0);
+                        }
+                    }
+
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: months,
+                            datasets: [{
+                                label: 'Revenue',
+                                data: revenues,
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+
+
+
+                    function onYearSelectChange() {
+                        var selectedYear = document.getElementById("yearSelect").value;
+                        // Sử dụng selectedYear ở đây để truyền giá trị năm.
+                        // Ví dụ:
+                        alert("Năm được chọn: " + selectedYear);
+                        // Gọi hàm hoặc thực hiện các hành động khác với selectedYear ở đây.
+                    }
+                </script>
+            }
+        </div>
+    </div>
+    <!-- Page end  -->
+</div>

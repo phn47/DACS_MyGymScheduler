@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Lỗi";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-danger">
+    @ViewBag.ErrorMessage
+</div>
+
+<a href="@Url.Action("Index", "ClassSchedules")" class="btn btn-primary">Trở lại</a>
+

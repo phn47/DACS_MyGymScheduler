@@ -1,0 +1,128 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Chi Tiết Nhân Viên";
+    Layout = "_LayoutDashBoard";
+}
+<style>
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        font-family: "Roboto Condensed",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    }
+
+    .roboto {
+        font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    }
+</style>
+@* <h1>Chi Tiết Nhân Viên</h1>
+
+<div>
+    <h2>@Model.TrainerFullName</h2>
+    <img src="~/Hinh/HinhGym/@Model.TrainerAvatar" alt="Trainer Avatar" class="img-fluid" style="max-width: 200px;">
+    <p>
+        <strong>Email:</strong> @Model.TrainerEmail<br />
+        <strong>Số điện thoại:</strong> @Model.TrainerPhone<br />
+        <strong>Địa chỉ:</strong> @Model.TrainerAddress
+    </p>
+</div> *@
+
+@* <h3>Các Lớp Học</h3>
+@foreach (var cls in Model.Classes)
+{
+    <div>
+        <h4>@cls.ClassType</h4>
+        @foreach (var schedule in cls.ClassSchedules)
+        {
+            <div>
+                <p>
+                    <strong>Lịch học:</strong> @schedule.Weekday từ @schedule.StartTime đến @schedule.EndTime<br />
+                    <strong>Học viên:</strong>
+                    <ul>
+                        @foreach (var student in schedule.Students)
+                        {
+                            <li>@student.FullName (@student.Email)</li>
+                        }
+                    </ul>
+                </p>
+            </div>
+        }
+    </div>
+} *@
+<div class="container-fluid detail-form-list spad">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thông Tin Chi Tiết Nhân Viên</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/Hinh/HinhGym/@Model.TrainerAvatar" alt="Trainer Avatar" class="img-fluid rounded-circle" style="max-width: 250px;">
+                        </div>
+                        <div class="col-md-8">
+                            <form method="post" data-toggle="validator" enctype="multipart/form-data">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <h2>@Model.TrainerFullName</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Email</label>
+                                            <input readonly class="form-control" required value="@Model.TrainerEmail" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Số điện thoại</label>
+                                            <input readonly class="form-control" required value="@Model.TrainerPhone" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Địa chỉ</label>
+                                            <input readonly class="form-control" required value="@Model.TrainerAddress" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @* <div class="row mt-5">
+                    <div class="col-md-12">
+                        <h4> Các Lớp Học</h4>
+
+                        @foreach (var cls in Model.Classes)
+                        {
+                            <div>
+                                <h4>@cls.ClassType</h4>
+                                @foreach (var schedule in cls.ClassSchedules)
+                                {
+                                    <div>
+                                        <p>
+                                            <strong>Lịch học:</strong> @schedule.Weekday từ @schedule.StartTime đến @schedule.EndTime<br />
+                                            <strong>Học viên:</strong>
+                                            <ul>
+                                                @foreach (var student in schedule.Students)
+                                                {
+                                                    <li>@student.FullName (@student.Email)</li>
+                                                }
+                                            </ul>
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                        }
+
+                    </div>
+                </div> *@
+            </div>
+        </div>
+    </div>
+</div>
+</div>

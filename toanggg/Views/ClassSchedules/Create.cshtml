@@ -1,0 +1,121 @@
+﻿@model toanggg.Data.ClassSchedule
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Đăng ký lịch</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClassId" class="control-label">Loại lớp</label>
+                                    <select asp-for="ClassId" class="form-control" asp-items="ViewBag.ClassId"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="StartTime" class="control-label color-text">Thời gian bắt đầu</label>
+                                    <input id="startTimeInput" asp-for="StartTime" class="form-control" readonly />
+                                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Weekday" class="control-label color-text">Ngày trong tuần</label>
+                                    <select asp-for="Weekday" class="form-control">
+                                        <option value="">Chọn ngày</option>
+                                        <option value="Thứ 2">Thứ 2</option>
+                                        <option value="Thứ 3">Thứ 3</option>
+                                        <option value="Thứ 4">Thứ 4</option>
+                                        <option value="Thứ 5">Thứ 5</option>
+                                        <option value="Thứ 6">Thứ 6</option>
+                                        <option value="Thứ 7">Thứ 7</option>
+                                        <option value="Chủ nhật">Chủ nhật</option>
+                                    </select>
+                                    <span asp-validation-for="Weekday" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="EndTime" class="control-label color-text">Thời gian kết thúc</label>
+                                    <input id="endTimeInput" asp-for="EndTime" class="form-control" readonly />
+                                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shiftSelect" class="control-label color-text">Ca làm việc</label>
+                                    <select id="shiftSelect" class="form-control">
+                                        <option value="Ca1">Ca 1 (6h đến 8h)</option>
+                                        <option value="Ca2">Ca 2 (10h đến 12h)</option>
+                                        <option value="Ca3">Ca 3 (17h đến 19h)</option>
+                                        <option value="Ca4">Ca 4 (19h đến 21h)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Đăng ký</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Bắt sự kiện khi người dùng chọn một ca làm việc
+    document.getElementById('shiftSelect').addEventListener('change', function () {
+        var selectedShift = this.value; // Lấy giá trị của ca làm việc được chọn
+
+        // Gán giá trị thích hợp cho StartTime và EndTime dựa trên ca làm việc được chọn
+        switch (selectedShift) {
+            case 'Ca1':
+                document.getElementById('startTimeInput').value = '06:00:00';
+                document.getElementById('endTimeInput').value = '08:00:00';
+                break;
+            case 'Ca2':
+                document.getElementById('startTimeInput').value = '10:00:00';
+                document.getElementById('endTimeInput').value = '12:00:00';
+                break;
+            case 'Ca3':
+                document.getElementById('startTimeInput').value = '17:00:00';
+                document.getElementById('endTimeInput').value = '19:00:00';
+                break;
+            case 'Ca4':
+                document.getElementById('startTimeInput').value = '19:00:00';
+                document.getElementById('endTimeInput').value = '21:00:00';
+                break;
+            default:
+                // Xử lý khi không có ca làm việc nào được chọn
+                document.getElementById('startTimeInput').value = '';
+                document.getElementById('endTimeInput').value = '';
+                break;
+        }
+    });
+</script>
+
+

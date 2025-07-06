@@ -1,0 +1,84 @@
+﻿@model toanggg.Data.Class
+
+@{
+    ViewData["Title"] = "HuanLuyenRieng";
+    Layout = "_LayoutDashBoardTrainer";
+}
+<style>
+
+
+</style>
+
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Đăng ký làm PT </h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="HuanLuyenRieng" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label">Tên lớp</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Nhập tên lớp" data-errors="Vui lòng nhập tên lớp." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            @* <div class="col-md-6">
+                            <div class="form-group">
+                            <label asp-for="Status" class="control-label">Trạng thái</label>
+                            <input asp-for="Status" class="form-control" placeholder="Nhập trạng thái" data-errors="Vui lòng nhập số trạng thái." required />
+                            <div class="help-block with-errors"></div>
+                            </div>
+                            </div> *@
+                      @*       <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClassType" class="control-label">Loại lớp</label>
+                                    <input asp-for="ClassType" class="form-control" placeholder="Nhập loại lớp" data-errors="Vui lòng nhập loại lớp." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div> *@
+                          
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClassType" class="control-label">Loại lớp</label>
+                                    <select asp-for="ClassType" class="form-control" asp-items="ViewBag.ClassType"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="GymId" class="control-label">Chi nhánh phòng tập</label>
+                                    <select asp-for="GymId" class="form-control" asp-items="ViewBag.GymId"></select>
+                                </div>
+                            </div>
+                            @* <div class="col-md-6">
+                            <div class="form-group">
+                            <label asp-for="TrainerId" class="control-label">Huấn luyện viên</label>
+                            <select asp-for="TrainerId" class="form-control" asp-items="ViewBag.TrainerId"></select>
+                            </div>
+                            </div> *@
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Đăng ký</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,182 @@
+﻿@model toanggg.Data.Gym
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutDashBoard";
+}
+
+<!-- Flatpickr CSS -->
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+
+<div class="container-fluid add-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thêm phòng Gym</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label">Tên phòng tập</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Nhập tên phòng tập" data-errors="Vui lòng nhập tên phòng tập." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Province">Chọn tỉnh thành</label>
+                                    <select id="Province" name="Province" class="form-control">
+                                        <option value="">Chọn tỉnh thành</option>
+                                        <option value="Hà Nội">Hà Nội</option>
+                                        <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                        <option value="Đà Nẵng">Đà Nẵng</option>
+                                        <option value="Hải Phòng">Hải Phòng</option>
+                                        <option value="Cần Thơ">Cần Thơ</option>
+                                        <option value="Bình Dương">Bình Dương</option>
+                                        <option value="Đồng Nai">Đồng Nai</option>
+                                        <option value="Khánh Hòa">Khánh Hòa</option>
+                                        <option value="Quảng Ninh">Quảng Ninh</option>
+                                        <option value="Hải Dương">Hải Dương</option>
+                                        <option value="Gia Lai">Gia Lai</option>
+                                        <option value="Long An">Long An</option>
+                                        <option value="Bình Thuận">Bình Thuận</option>
+                                        <option value="Đắk Lắk">Đắk Lắk</option>
+                                        <option value="Bắc Giang">Bắc Giang</option>
+                                        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                        <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                        <option value="Thái Nguyên">Thái Nguyên</option>
+                                        <option value="Bắc Ninh">Bắc Ninh</option>
+                                        <option value="Quảng Nam">Quảng Nam</option>
+                                        <option value="Đồng Tháp">Đồng Tháp</option>
+                                        <option value="Bình Phước">Bình Phước</option>
+                                        <option value="Nghệ An">Nghệ An</option>
+                                        <option value="Vĩnh Long">Vĩnh Long</option>
+                                        <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                        <option value="Nam Định">Nam Định</option>
+                                        <option value="Phú Thọ">Phú Thọ</option>
+                                        <option value="Ninh Bình">Ninh Bình</option>
+                                        <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                        <option value="Lâm Đồng">Lâm Đồng</option>
+                                        <option value="Thái Bình">Thái Bình</option>
+                                        <option value="Kiên Giang">Kiên Giang</option>
+                                        <option value="Bến Tre">Bến Tre</option>
+                                        <option value="Sơn La">Sơn La</option>
+                                        <option value="Thanh Hóa">Thanh Hóa</option>
+                                        <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                        <option value="Cà Mau">Cà Mau</option>
+                                        <option value="Tây Ninh">Tây Ninh</option>
+                                        <option value="Lào Cai">Lào Cai</option>
+                                        <option value="Lạng Sơn">Lạng Sơn</option>
+                                        <option value="Nam Định">Nam Định</option>
+                                        <option value="Hòa Bình">Hòa Bình</option>
+                                        <option value="Ninh Thuận">Ninh Thuận</option>
+                                        <option value="Kon Tum">Kon Tum</option>
+                                        <option value="Sóc Trăng">Sóc Trăng</option>
+                                        <option value="Bạc Liêu">Bạc Liêu</option>
+                                        <option value="Bắc Kạn">Bắc Kạn</option>
+                                        <option value="Bắc Ninh">Bắc Ninh</option>
+                                        <option value="Cao Bằng">Cao Bằng</option>
+                                        <option value="Hà Nam">Hà Nam</option>
+                                        <option value="Bắc Ninh">Bắc Ninh</option>
+                                        <option value="Điện Biên">Điện Biên</option>
+                                        <option value="Hậu Giang">Hậu Giang</option>
+                                        <option value="Hòa Bình">Hòa Bình</option>
+                                        <option value="Yên Bái">Yên Bái</option>
+                                        <option value="Tuyên Quang">Tuyên Quang</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="SpecificAddress">Địa chỉ cụ thể</label>
+                                    <input type="text" id="SpecificAddress" name="SpecificAddress" placeholder="Nhập địa chỉ" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại" data-errors="Vui lòng nhập số điện thoại." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" placeholder="Nhập địa chỉ email" data-errors="Vui lòng nhập địa chỉ email." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Website" class="control-label">Địa chỉ Website</label>
+                                    <input asp-for="Website" class="form-control" placeholder="Nhập địa chỉ website" data-errors="Vui lòng nhập địa chỉ website." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="OpenHours" class="control-label">Giờ mở cửa</label>
+                                    <input asp-for="OpenHours" type="time" class="form-control" placeholder="Nhập Giờ mở cửa" data-errors="Vui lòng nhập giờ mở cửa." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CloseHours" class="control-label">Giờ đóng cửa</label>
+                                    <input asp-for="CloseHours" type="time" class="form-control" placeholder="Nhập giờ đóng cửa" data-errors="Vui lòng nhập giờ đóng cửa." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PriceRange" class="control-label">Phạm vi giá</label>
+                                    <input asp-for="PriceRange" class="form-control" placeholder="Nhập phạm vi giá" data-errors="Vui lòng nhập phạm vi giá." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Images" class="control-label">Hình ảnh</label>
+                                    <input asp-for="Images" type="file" class="form-control" placeholder="Chọn hình ảnh" data-errors="Vui lòng chọn hình ảnh." required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Xác nhận thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("#timePicker", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "h:i K",
+            time_24hr: false,
+            defaultHour: 12,
+            defaultMinute: 0
+        });
+    });
+</script> *@
+

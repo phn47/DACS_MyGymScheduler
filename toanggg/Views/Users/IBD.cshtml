@@ -1,0 +1,266 @@
+﻿@{
+    ViewData["Title"] = "IBD";
+    Layout = "_LayoutCustomer";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Height, Weight & Gender Slider</title>
+    <style>
+        .gender-selection label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .gender-options {
+            display: flex;
+            align-items: center;
+        }
+
+            .gender-options input[type="radio"] {
+                display: none;
+            }
+
+            .gender-options label {
+                cursor: pointer;
+                margin-right: 10px;
+                padding: 10px 112px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+                .gender-options label:hover {
+                    background-color: #f0f0f0;
+                }
+
+            .gender-options input[type="radio"]:checked + label {
+                background-color: #363636;
+                color: #fff;
+                border-color: #363636;
+            }
+
+        #bmiResult {
+            color: #060606; /* Đặt màu chữ thành màu trắng */
+        }
+
+        .chart-table table {
+            border: 1px solid #363636;
+            width: 100%;
+        }
+
+            .chart-table table thead {
+                border-bottom: 1px solid #363636;
+            }
+
+                .chart-table table thead tr th {
+                    background: #EEEEEE;
+                    font-size: 14px;
+                    color: #060606;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    border-right: 1px solid #363636;
+                    padding: 14px 0 11px 50px;
+                }
+
+            .chart-table table tbody tr:nth-child(even) {
+                background: #EEEEEE;
+            }
+
+            .chart-table table tbody tr td {
+                font-size: 14px;
+                color: #060606;
+                border-right: 1px solid #363636;
+                padding: 17px 0 17px 50px;
+            }
+
+                .chart-table table tbody tr td.point {
+                    width: 200px;
+                }
+
+        .pricing-table.table thead th .title {
+            color: rgba(69,69,69,.7)
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+
+                        <div class="bt-option">
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- BMI Calculator Section Begin -->
+    <section class=" spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title chart-title">
+                        <span>KIỂM TRA CƠ THỂ CỦA BẠN</span>
+                        <h2 class="text-dark">Bảng đối chiếu BMI</h2>
+                    </div>
+                    <div class="chart-table">
+                        <p class="text-dark">
+                            Đối với người lớn từ 20 tuổi trở lên, Sử dụng bảng phân loại chuẩn cho cả nam và nữ để đánh giá chỉ số BMI.
+                        </p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Chỉ số Bmi</th>
+                                    <th><span class="title" data-short-title="Phân Loại">Phân Loại</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="point">BMI &lt;16</td>
+                                    <td>Gầy độ III</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">16 &le; BMI &lt;17</td>
+                                    <td>Gầy độ II</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">17 &le; BMI &lt;18.5</td>
+                                    <td>Gầy độ I</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">18.5 &le; BMI &lt;25</td>
+                                    <td>Bình thường</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">25 &le; BMI &lt;30</td>
+                                    <td>Thừa cân</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">30 &le; BMI &lt;35</td>
+                                    <td>Béo phì Độ I</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">35 &le; BMI &lt;40</td>
+                                    <td>Béo phì Độ II</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">BMI &ge;40</td>
+                                    <td>Béo phì loại III</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-title chart-calculate-title">
+                        <span>KIỂM TRA CƠ THỂ CỦA BẠN</span>
+                        <h2 class="text-dark">ĐO CHỈ SỐ CÂN NẶNG - CHIỀU CAO (BMI)</h2>
+                    </div>
+                    <div class="chart-calculate-form">
+                        <p class="text-dark">
+                            BMI là viết tắt của "Body Mass Index" (Chỉ số khối cơ thể), đây là một phép đo tiêu chuẩn được sử dụng để đánh giá mức độ cân đối giữa cân nặng và chiều cao của một người. Chỉ số BMI giúp bạn phân loại tình trạng sức khỏe của mình là mập, bình thường, thiếu cân hay ốm. Kết quả tính BMI online giúp bạn biết được cơ thể đang ở tình trạng nào từ đó điều chỉnh để khoẻ mạnh hơn.
+                        </p>
+                        <p class="text-dark">
+                            BMI được tính bằng công thức sau đây: BMI = Cân nặng/Chiều cao^2<br>
+                            - Cân nặng tính theo kg<br>
+                            - Chiều cao tính theo m
+                        </p>
+                        <form onsubmit="calculateBMI(); return false;">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" id="heightInput" class="text-dark" placeholder="Chiều cao / cm">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="weightInput" class="text-dark" placeholder="Cân nặng / kg">
+                                </div>
+                                <div class="col-sm-6 gender-selection">
+                                    <div class="gender-options">
+                                        <input type="radio" id="male" name="gender" value="male" checked>
+                                        <label for="male">Nam</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 gender-selection ">
+                                    <div class="gender-options">
+                                        <input type="radio" id="female" name="gender" value="female" checked>
+                                        <label for="female">Nữ</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button type="submit" onclick="showResult()">Xem kết quả</button>
+                                </div>
+
+
+                            </div>
+                        </form>
+                        <div id="resultContainer" class="col-lg-12 mt-4" style="display: none;">
+                            <div class="bmi-container">
+                                <div id="bmiResult"></div>
+                            </div>
+                        </div>
+                        <p class="mt-4"> <i class="text-dark">Lưu ý: BMI phù hợp với người từ 18 đến 65 tuổi, trừ trẻ em, thanh thiếu niên đang phát triển, phụ nữ mang thai, cho con bú, người già và những người có cơ bắp phát triển.</i> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BMI Calculator Section End -->
+
+    <script>
+        function updateGender() {
+            var genderRadios = document.getElementsByName("gender");
+            var gender;
+            for (var i = 0; i < genderRadios.length; i++) {
+                if (genderRadios[i].checked) {
+                    gender = genderRadios[i].value;
+                    break;
+                }
+            }
+            return gender;
+        }
+
+        function calculateBMI() {
+            var height = parseInt(document.getElementById("heightInput").value);
+            var weight = parseInt(document.getElementById("weightInput").value);
+            var gender = updateGender();
+            var bmi = weight / ((height / 100) * (height / 100));
+            var bmiResult;
+
+            if (bmi < 16) {
+                bmiResult = "Gầy độ III. Trọng lượng hiện tại thiếu cân, cần ăn uống bổ sung đầy đủ chất.";
+            } else if (bmi >= 16 && bmi < 17) {
+                bmiResult = "Gầy độ II. Trọng lượng hiện tại thiếu cân, cần ăn uống bổ sung đầy đủ chất.";
+            } else if (bmi >= 17 && bmi < 18.5) {
+                bmiResult = "Gầy độ I. Trọng lượng hiện tại thiếu cân, cần ăn uống bổ sung đầy đủ chất.";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiResult = "Bình thường. Chỉ số BMI nằm trong phạm vi bình thường. Cố gắng duy trì, bổ sung đầy đủ nước, hãy tập thể dục nhẹ sau khi ăn để duy trì vóc dáng đẹp.";
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiResult = "Thừa cân. Trọng lượng cơ thể hiện tại thừa cân, cần phải có chế độ ăn uống tập luyện hợp lý. Hãy tránh những thực phẩm có nhiều năng lượng như nhiều dầu mỡ.";
+            } else if (bmi >= 30 && bmi < 35) {
+                bmiResult = "Béo phì Độ I. Trọng lượng cơ thể hiện tại thừa cân, cần phải có chế độ ăn uống tập luyện hợp lý. Hãy tránh những thực phẩm có nhiều năng lượng như nhiều dầu mỡ.";
+            } else if (bmi >= 35 && bmi < 40) {
+                bmiResult = "Béo phì Độ II. Trọng lượng cơ thể hiện tại thừa cân, cần phải có chế độ ăn uống tập luyện hợp lý. Hãy tránh những thực phẩm có nhiều năng lượng như nhiều dầu mỡ.";
+            } else {
+                bmiResult = "Béo phì loại III. Trọng lượng cơ thể hiện tại thừa cân, cần phải có chế độ ăn uống tập luyện hợp lý. Hãy tránh những thực phẩm có nhiều năng lượng như nhiều dầu mỡ.";
+            }
+
+            document.getElementById("bmiResult").innerHTML = "BMI: " + bmi.toFixed(2) + " - " + bmiResult;
+        }
+        function showResult() {
+            calculateBMI();
+            document.getElementById("resultContainer").style.display = "block";
+        }
+
+    </script>
+</body>
+</html>

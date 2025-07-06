@@ -1,0 +1,89 @@
+﻿@model toanggg.Data.MembershipType
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_LayoutDashBoard";
+}
+
+<div class="container-fluid Delete-form-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Thông tin gói thẻ</h4>
+                        <p class="mb-0">
+                            Bạn có chắc chắn muốn xóa thông tin gói thẻ này không?
+                        </p>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Delete" method="post" data-toggle="validator" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="hidden" asp-for="MembershipTypeId" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label">Tên gói</label>
+                                    <input asp-for="Name" readonly class="form-control" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Mô tả</label>
+                                    <input asp-for="Description" readonly class="form-control" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="AccessHours" class="control-label">
+                                        Giờ truy cập
+                                    </label>
+                                    <input asp-for="AccessHours" readonly class="form-control" />
+                                    @*   <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Price" class="control-label">Giá gói</label>
+                                    <input asp-for="Price" readonly class="form-control" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Status" class="control-label">Trạng thái</label>
+                                    <input asp-for="Status" readonly class="form-control" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="GymTypeAccessNavigation" class="control-label">
+                                        Phòng tập
+                                    </label>
+                                    <input asp-for="GymTypeAccessNavigation.GymTypeId" readonly class="form-control" />
+                                    @*  <div class="help-block with-errors"></div> *@
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2">Xóa thông tin</button>
+                                    <div type="submit" class="btn mr-2">
+                                        <a asp-action="Index">Trở về danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

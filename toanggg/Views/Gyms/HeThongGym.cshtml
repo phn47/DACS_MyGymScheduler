@@ -1,0 +1,332 @@
+﻿@model IEnumerable<toanggg.Data.Gym>
+@{
+    ViewData["Title"] = "HeThongGym";
+    Layout = "_LayoutCustomer";
+}
+
+
+<style>
+    .section-club-list {
+        margin-top: 60px;
+    }
+
+    .section {
+        margin-bottom: 64px;
+    }
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .m-b-3 {
+        margin-bottom: 30px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .section-title {
+        font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #454545;
+        margin-bottom: 32px;
+    }
+
+    .roboto {
+        font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .ml-auto, .mx-auto {
+        margin-left: auto;
+    }
+
+    .mr-auto, .mx-auto {
+        margin-right: auto;
+    }
+
+    .mb-5, .my-5 {
+        margin-bottom: 3rem;
+    }
+
+    .seo-desc {
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .align-items-center {
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .justify-content-center {
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .mb-0, .my-0 {
+        margin-bottom: 0;
+    }
+
+    select.form-control {
+        -webkit-appearance: none;
+        background-position: right 50%;
+        background-repeat: no-repeat;
+        background-size: 50px 20px;
+        padding-right: 48px;
+    }
+
+        select.form-control.control-light {
+            -webkit-appearance: none;
+            background-position: right 50%;
+            background-repeat: no-repeat;
+            background-size: 30px 20px;
+            padding-right: 1.5em;
+        }
+
+
+        select.form-control:active, select.form-control:focus {
+            box-shadow: none;
+            border-color: #d7dbe3;
+        }
+
+    .form-control.control-light {
+        background: #fff;
+    }
+
+    .card-list .item {
+        overflow: hidden;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        margin-bottom: 32px;
+        position: relative;
+    }
+
+        .card-list .item .item-img {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+            .card-list .item .item-img img {
+                -webkit-transition: all .3s ease;
+                transition: all .3s ease;
+                width: 100%;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+
+            .card-list .item .item-img.ratio-4-3 {
+                position: relative;
+            }
+
+                .card-list .item .item-img.ratio-4-3:before {
+                    display: block;
+                    content: "";
+                    width: 100%;
+                    padding-top: 75%
+                }
+
+                .card-list .item .item-img.ratio-4-3 > .content {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0
+                }
+
+                .card-list .item .item-img.ratio-4-3 img {
+                    height: 100%;
+                }
+
+            .card-list .item .item-img.ratio-3-4 {
+                position: relative;
+            }
+
+                .card-list .item .item-img.ratio-3-4:before {
+                    display: block;
+                    content: "";
+                    width: 100%;
+                    padding-top: 133.33333%;
+                }
+
+                .card-list .item .item-img.ratio-3-4 > .content {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                }
+
+                .card-list .item .item-img.ratio-3-4 img {
+                    height: 100%;
+                }
+
+            .card-list .item .item-img.ratio-1-1 {
+                position: relative;
+            }
+
+                .card-list .item .item-img.ratio-1-1:before {
+                    display: block;
+                    content: "";
+                    width: 100%;
+                    padding-top: 100%;
+                }
+
+                .card-list .item .item-img.ratio-1-1 > .content {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0
+                }
+
+                .card-list .item .item-img.ratio-1-1 img {
+                    height: 100%;
+                }
+
+        .card-list .item:hover .item-img img {
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        .card-list .item .stripe-vector {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 0;
+        }
+
+        .card-list .item .item-body {
+            position: relative;
+            z-index: 1;
+            padding: 24px;
+        }
+
+            .card-list .item .item-body .title {
+                display: inline-block;
+                text-decoration: none;
+                font-size: 20px;
+                color: #f36100;
+                font-family: "Roboto Condensed",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: 16px;
+            }
+
+    .icon-list:not(:last-child) {
+        margin-bottom: 12px;
+    }
+
+    .icon-list > i {
+        margin-right: 6px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        font-family: "Roboto Condensed",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    }
+
+</style>
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/hero/hinh-1.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+
+                    <div class="bt-option">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<section class="section section-club-list">
+    <div class="container">
+        <div class="text-center m-b-3">
+            <div class="section-title">Tập luyện ở câu lạc bộ gần bạn</div>
+            <h1 class="sub-description-title mx-auto seo-desc mb-5">Lựa chọn phòng tập gần bạn nhất để có thể tập luyện dễ dàng và tiết kiệm thời gian.</h1>
+            <label for="address-select" class="roboto">Chọn địa chỉ:</label>
+            <div class="row justify-content-center align-items-center">
+                <div class="form-group col-md-4 mb-0">
+                    <select id="address-select" class="form-control control-light" data-filter-control="filter-form" name="district_slug">
+                        <option value="">Tất cả</option> <!-- Option to show all affiliates -->
+                        @foreach (var gym in Model)
+                        {
+                            var addressParts = gym.Address.Split(',');
+                            var displayAddress = addressParts[0]; // Get the part before the first comma
+                            <option value="@gym.Address">@displayAddress</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-list">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="item">
+
+                            <a href="@Url.Action("Details", "Gyms", new { id = item.GymId })" class="item-img ratio-4-3 d-block">
+                                <img alt="@item.Name" src="~/Hinh/HinhGym/@item.Images" class="content">
+                            </a>
+                            <div class="item-body">
+                                <a href="@Url.Action("Details", "Gyms", new { id = item.GymId })" class="title">@item.Name</a>
+                                <div class="icon-list">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                                        <path d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z"></path>
+                                    </svg> @item.Address
+                                </div>
+                                @*  <div class="icon-list"><i class="remixicon-phone-fill"></i><a href="tel:1900633638">1900633638</a></div> *@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addressSelect = document.getElementById('address-select');
+        const affiliates = document.querySelectorAll('.affiliate');
+
+        addressSelect.addEventListener('change', function () {
+            const selectedAddress = this.value;
+
+            affiliates.forEach(affiliate => {
+                if (selectedAddress === "" || affiliate.dataset.address === selectedAddress) {
+                    affiliate.style.display = "block";
+                } else {
+                    affiliate.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
